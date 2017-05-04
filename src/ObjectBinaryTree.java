@@ -4,6 +4,9 @@
 public class ObjectBinaryTree {
     private ObjectTreeNode root;
 
+    /**
+     * Constructor method for ObjectBinaryTrees.
+     */
     public ObjectBinaryTree() {
         root = null;
     }
