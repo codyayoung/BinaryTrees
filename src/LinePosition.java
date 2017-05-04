@@ -7,7 +7,6 @@ public class LinePosition {
     //Instance variables
     private int line_no;
     private int word_pos;
-    private ObjectList wordtrack;
 
     /**
      * Constructor method for LinePosition objects. Initializes instance variables.
@@ -15,7 +14,6 @@ public class LinePosition {
     public LinePosition(int line_no, int word_pos) {
         this.line_no = line_no;
         this.word_pos = word_pos;
-        ObjectList wordtrack = new ObjectList();
     }
 
     public int getLine_no() {
@@ -32,13 +30,5 @@ public class LinePosition {
 
     public void setWord_pos(int word_pos) {
         this.word_pos = word_pos;
-    }
-
-    public ObjectList getWordtrack() {
-        return wordtrack;
-    }
-
-    public void setWordtrack(ObjectList wordtrack) {
-        this.wordtrack = wordtrack;
     }
 }

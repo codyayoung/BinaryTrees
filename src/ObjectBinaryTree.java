@@ -1,5 +1,5 @@
 /**
- * Created by masterchef13 on 5/4/17.
+ * Created by Cody Young on 5/4/17.
  */
 public class ObjectBinaryTree {
     private ObjectTreeNode root;
