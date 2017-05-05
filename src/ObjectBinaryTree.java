@@ -74,7 +74,7 @@ public class ObjectBinaryTree {
                 setLeftChild(p, r);
             else if (((TreeComparable)(r.getInfo())).compareTo((TreeComparable)(p.getInfo())) > 0)
                 setRightChild(p, r);
-            else ((TreeComparable)(p.getInfo())).operate((TreeComparable)(r.getInfo()));
+            //else ((TreeComparable)(p.getInfo())).operate((TreeComparable)(r.getInfo()));
         }
     }
 
@@ -98,7 +98,7 @@ public class ObjectBinaryTree {
 
     public void preTrav(ObjectTreeNode tree) {
         if (tree != null) {
-            ((TreeComparable)tree.getInfo()).visit();
+            //((TreeComparable)tree.getInfo()).visit();
             preTrav(tree.getLeft());
             preTrav(tree.getRight());
         }
@@ -107,7 +107,7 @@ public class ObjectBinaryTree {
     public void inTrav(ObjectTreeNode tree) {
         if (tree != null) {
             inTrav(tree.getLeft());
-            ((TreeComparable)tree.getInfo()).visit();
+            //((TreeComparable)tree.getInfo()).visit();
             inTrav(tree.getRight());
         }
     }
@@ -116,7 +116,7 @@ public class ObjectBinaryTree {
         if (tree != null) {
             postTrav(tree.getLeft());
             postTrav(tree.getRight());
-            ((TreeComparable)tree.getInfo()).visit();
+           // ((TreeComparable)tree.getInfo()).visit();
         }
     }
 
@@ -130,11 +130,11 @@ public class ObjectBinaryTree {
         // Search for the node with info key, set p to point to
         //that node and set q to point to its parent, if any.
         while (p != null && !found) {
-            if (((TreeComparable)(r.getInfo())).compareTo((TreeComparable)(p.getInfo())) == 0)
+            if (((TreeComparable) (r.getInfo())).compareTo((TreeComparable) (p.getInfo())) == 0)
                 found = true;
             else {
                 q = p;
-                if (((TreeComparable)(r.getInfo())).compareTo((TreeComparable)(p.getInfo())) < 0)
+                if (((TreeComparable) (r.getInfo())).compareTo((TreeComparable) (p.getInfo())) < 0)
                     p = p.getLeft();
                 else
                     p = p.getRight();
@@ -179,4 +179,6 @@ public class ObjectBinaryTree {
                 q.setLeft(v);
             else q.setRight(v);
         }
+    }
+
 }

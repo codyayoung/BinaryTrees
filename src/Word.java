@@ -5,7 +5,7 @@
 public class Word {
     //Instance variables
     private String inword;
-    private int word_count;     //Word count
+    private int word_count;               //Word count
     private ObjectList line_track;        //Object list containing LinePosition objects,
                                           //which contains line number and word position.
 
@@ -13,7 +13,6 @@ public class Word {
      * Constructor method for Word objects. Initializes instance variables.
      */
     public Word () {
-        this.inword = inword;
         word_count = 0;
         line_track = new ObjectList();
     }
@@ -37,7 +36,7 @@ public class Word {
     /**
      * Adds a LinePosition object to the ObjectList.
      */
-    public void addWord() {
-
+    public void addWord(LinePosition linepos) {
+        line_track.insert(linepos);
     }
 }
