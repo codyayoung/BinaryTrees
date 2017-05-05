@@ -13,7 +13,7 @@ public class Driver {
         while(sc.hasNext()) {
             line_number += 1;
             String input_string = sc.nextLine();
-            System.out.printf("%d ", line_number);
+            System.out.printf("%d  ", line_number);
             System.out.println(input_string);
         }
     }
