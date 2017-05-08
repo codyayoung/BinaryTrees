@@ -54,6 +54,6 @@ public class ObjectTreeNode implements ObjectTreeNodeInterface {
     }
 
     public void operate(ObjectTreeNode r) {
-
+        
     }
 }

@@ -1,5 +1,7 @@
 /**
- * Created by Cody Young on 5/4/17.
+ * Creates Binary Tree objects to hold other objects.
+ * @author Cody Young
+ * @version 5/19/2017
  */
 public class ObjectBinaryTree implements ObjectBinaryTreeInterface {
     private ObjectTreeNode root;
@@ -179,5 +181,9 @@ public class ObjectBinaryTree implements ObjectBinaryTreeInterface {
                 q.setLeft(v);
             else q.setRight(v);
         }
+    }
+
+    public void operate (Object r) {
+        delete(r);
     }
 }
