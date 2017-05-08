@@ -3,4 +3,6 @@
  */
 public interface TreeComparable {
     public int compareTo (Object o);
+    public void visit();
+    public void operate(ObjectTreeNode r);
 }

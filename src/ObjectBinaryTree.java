@@ -1,7 +1,7 @@
 /**
  * Created by Cody Young on 5/4/17.
  */
-public class ObjectBinaryTree {
+public class ObjectBinaryTree implements ObjectBinaryTreeInterface {
     private ObjectTreeNode root;
 
     /**
@@ -74,7 +74,7 @@ public class ObjectBinaryTree {
                 setLeftChild(p, r);
             else if (((TreeComparable)(r.getInfo())).compareTo((TreeComparable)(p.getInfo())) > 0)
                 setRightChild(p, r);
-            //else ((TreeComparable)(p.getInfo())).operate((TreeComparable)(r.getInfo()));
+            else ((TreeComparable)(p.getInfo())).operate((TreeComparable)(r.getInfo()));
         }
     }
 
@@ -98,7 +98,7 @@ public class ObjectBinaryTree {
 
     public void preTrav(ObjectTreeNode tree) {
         if (tree != null) {
-            //((TreeComparable)tree.getInfo()).visit();
+            ((TreeComparable)tree.getInfo()).visit();
             preTrav(tree.getLeft());
             preTrav(tree.getRight());
         }
@@ -107,7 +107,7 @@ public class ObjectBinaryTree {
     public void inTrav(ObjectTreeNode tree) {
         if (tree != null) {
             inTrav(tree.getLeft());
-            //((TreeComparable)tree.getInfo()).visit();
+            ((TreeComparable)tree.getInfo()).visit();
             inTrav(tree.getRight());
         }
     }
@@ -116,7 +116,7 @@ public class ObjectBinaryTree {
         if (tree != null) {
             postTrav(tree.getLeft());
             postTrav(tree.getRight());
-           // ((TreeComparable)tree.getInfo()).visit();
+            ((TreeComparable)tree.getInfo()).visit();
         }
     }
 
@@ -180,5 +180,4 @@ public class ObjectBinaryTree {
             else q.setRight(v);
         }
     }
-
 }

@@ -8,4 +8,5 @@ public interface ObjectTreeNodeInterface {
 	public ObjectTreeNode getLeft();
 	public void setRight(ObjectTreeNode p);
 	public ObjectTreeNode getRight();
+	public void visit();
 }

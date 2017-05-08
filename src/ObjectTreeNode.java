@@ -1,7 +1,7 @@
 /**
  * Created by masterchef13 on 5/4/17.
  */
-public class ObjectTreeNode {
+public class ObjectTreeNode implements ObjectTreeNodeInterface {
     private Object info;
     private ObjectTreeNode left;
     private ObjectTreeNode right;
@@ -47,5 +47,13 @@ public class ObjectTreeNode {
 
     public ObjectTreeNode getRight() {
         return right;
+    }
+
+    public void visit() {
+        System.out.println(info.toString());
+    }
+
+    public void operate(ObjectTreeNode r) {
+
     }
 }
