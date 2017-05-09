@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main (String [] args) throws IOException {
+        Xref x = new Xref();
         int line_number = 0;
         Scanner sc = new Scanner(new File("getty.txt"));
 
@@ -16,5 +17,6 @@ public class Driver {
             System.out.printf("%d  ", line_number);
             System.out.println(input_string);
         }
+        x.scanGetty();
     }
 }

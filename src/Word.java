@@ -18,6 +18,15 @@ public class Word {
     }
 
     /**
+     * Overloaded constructor for Word objects. Takes input string as argument.
+     */
+    public Word (String inword) {
+        word_count = 0;
+        line_track = new ObjectList();
+        this.inword = inword;
+    }
+
+    /**
      * Gets word input from text file.
      * @return Word from text file.
      */
