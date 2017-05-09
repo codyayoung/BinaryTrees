@@ -2,7 +2,7 @@
  * Creates Word class objects, which are placed into the object binary search tree.
  * Created by Cody Young on 5/4/17.
  */
-public class Word {
+public class Word implements TreeComparable {
     //Instance variables
     private String inword;
     private int word_count;               //Word count
@@ -48,4 +48,5 @@ public class Word {
     public void addWord(LinePosition linepos) {
         line_track.insert(linepos);
     }
+
 }
