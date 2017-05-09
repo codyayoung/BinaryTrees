@@ -33,4 +33,16 @@ public class Xref {
             tree.insertBSTDup(word);
         }
     }
+
+    /**
+     * Outputs each word in binary tree alphabetically, line number, word position, and word count.
+     */
+    public void outputTree() {
+        ObjectTreeNode p = tree.getRoot();
+        while(p != null) {
+            Word temp = (Word)p.getInfo();
+            tree.inTrav(p);
+            System.out.printf("%s", temp.getInword());
+        }
+    }
 }

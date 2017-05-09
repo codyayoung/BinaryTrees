@@ -69,8 +69,9 @@ public class Word implements TreeComparable {
      * @param w
      * @return
      */
-    public int compareTo(Word w ) {
-        
+    public int compareTo(Object w ) {
+        Word y = (Word) w;
+        return inword.compareTo(y.getInword());
     }
 
 }

@@ -18,5 +18,6 @@ public class Driver {
             System.out.println(input_string);
         }
         x.scanGetty();
+        x.outputTree();
     }
 }
