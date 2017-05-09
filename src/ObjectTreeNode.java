@@ -52,8 +52,4 @@ public class ObjectTreeNode implements ObjectTreeNodeInterface {
     public void visit() {
         System.out.println(info.toString());
     }
-
-    public void operate(Object r) {
-        
-    }
 }
