@@ -26,7 +26,7 @@ public class Word implements TreeComparable {
         this.inword = inword;
     }
 
-    /**
+    /**`
      * Gets word input from text file.
      * @return Word from text file.
      */
@@ -47,6 +47,30 @@ public class Word implements TreeComparable {
      */
     public void addWord(LinePosition linepos) {
         line_track.insert(linepos);
+    }
+
+    /**
+     * Operate method
+     * @param r
+     */
+    public void operate (Object r) {
+
+    }
+
+    /**
+     * Visits node and prints out contents.
+     */
+    public void visit() {
+        System.out.println(inword.toString());
+    }
+
+    /**
+     * compareTo method overwrite to compare Word objects.
+     * @param w
+     * @return
+     */
+    public int compareTo(Word w ) {
+        
     }
 
 }

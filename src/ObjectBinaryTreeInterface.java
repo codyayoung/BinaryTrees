@@ -12,5 +12,4 @@ public interface ObjectBinaryTreeInterface {
 	public void inTrav(ObjectTreeNode tree);
 	public void postTrav(ObjectTreeNode tree);
 	public void delete(Object o);
-    public void operate(Object r);
 }
