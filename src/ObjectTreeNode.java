@@ -53,7 +53,7 @@ public class ObjectTreeNode implements ObjectTreeNodeInterface {
         System.out.println(info.toString());
     }
 
-    public void operate(ObjectTreeNode r) {
+    public void operate(Object r) {
         
     }
 }
