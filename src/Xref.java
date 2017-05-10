@@ -26,8 +26,9 @@ public class Xref {
         Scanner sc = new Scanner(new File("getty.txt"));
         while (sc.hasNext()) {
             String input_string = sc.next();
-            String delims = "[,.-; ]+";
-            String[] tokens = input_string.toLowerCase().split(delims);
+            //String delims = "[ -,.;]+";
+            String[] tokens = input_string.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+            //String[] tokens = input_string.toLowerCase().split(delims);
             String first = tokens[0];
             word = new Word(first);
             tree.insertBSTDup(word);
@@ -39,10 +40,8 @@ public class Xref {
      */
     public void outputTree() {
         ObjectTreeNode p = tree.getRoot();
-        while(p != null) {
-            Word temp = (Word)p.getInfo();
-            tree.inTrav(p);
-            System.out.printf("%s", temp.getInword());
-        }
+        Word temp = (Word)p.getInfo();
+        tree.inTrav(p);
+        System.out.printf("%s", temp.getInword());
     }
 }
