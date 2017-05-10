@@ -25,7 +25,6 @@ public class Xref {
      */
     public void scanGetty() throws IOException {
         LineNumberReader lr = new LineNumberReader(new FileReader("getty.txt"));
-        lr.setLineNumber(1);        //Overrides default line number of 0
         int word_count = 0;
         int line_no = 1;
         int word_pos = 1;
