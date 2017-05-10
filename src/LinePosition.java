@@ -3,7 +3,7 @@
  * and current positions of words from input file.
  * Created by Cody Young on 5/4/17.
  */
-public class LinePosition {
+public class LinePosition extends Word {
     //Instance variables
     private int line_no;
     private int word_pos;
@@ -16,10 +16,18 @@ public class LinePosition {
         this.word_pos = word_pos;
     }
 
+    /**
+     * Gets line number of word.
+     * @return Line number of word
+     */
     public int getLine_no() {
         return line_no;
     }
 
+    /**
+     * Sets line number of word.
+     * @param line_no
+     */
     public void setLine_no(int line_no) {
         this.line_no = line_no;
     }

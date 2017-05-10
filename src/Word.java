@@ -20,7 +20,7 @@ public class Word implements TreeComparable {
     /**
      * Overloaded constructor for Word objects. Takes input string as argument.
      */
-    public Word (String inword) {
+    public Word (String inword, int word_count, ObjectList line_track) {
         word_count = 0;
         line_track = new ObjectList();
         this.inword = inword;
@@ -45,16 +45,15 @@ public class Word implements TreeComparable {
     /**
      * Adds a LinePosition object to the ObjectList.
      */
-    public void addWord(LinePosition linepos) {
+    public void addLinePos(LinePosition linepos) {
         line_track.insert(linepos);
     }
 
     /**
-     * Operate method
+     * Does an operation on something.
      * @param r
      */
     public void operate (Object r) {
-
     }
 
     /**
@@ -69,9 +68,24 @@ public class Word implements TreeComparable {
      * @param w
      * @return
      */
-    public int compareTo(Object w ) {
+    public int compareTo(Object w) {
         Word y = (Word) w;
         return inword.compareTo(y.getInword());
     }
 
+    public int getWord_count() {
+        return word_count;
+    }
+
+    public void setWord_count(int word_count) {
+        this.word_count = word_count;
+    }
+
+    public ObjectList getLine_track() {
+        return line_track;
+    }
+
+    public void setLine_track(ObjectList line_track) {
+        this.line_track = line_track;
+    }
 }

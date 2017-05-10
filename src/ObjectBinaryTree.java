@@ -182,8 +182,4 @@ public class ObjectBinaryTree implements ObjectBinaryTreeInterface {
             else q.setRight(v);
         }
     }
-
-    public void operate (Object r) {
-        delete(r);
-    }
 }
