@@ -48,7 +48,6 @@ public class Xref {
                 lpos.setWord_pos(word_pos);
 
                 //line_track.insert(lpos);      //Gives ClassCastingException - need to fix
-                word_count += 1;
                 word.setWord_count(word_count);
                 tree.insertBSTDup(word);
             }
