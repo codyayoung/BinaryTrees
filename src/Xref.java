@@ -18,14 +18,12 @@ public class Xref {
      */
     public Xref() throws IOException {
         tree = new ObjectBinaryTree();
-        line_track  = new ObjectList();
     }
 
     /**
      * Reads from getty.txt (after hashing) , wraps into Word objects, and places into object binary tree.
      */
     public void scanGetty() throws IOException {
-        //Scanner sc = new Scanner(new File("getty.txt"));
         LineNumberReader lr = new LineNumberReader(new FileReader("getty.txt"));
         lr.setLineNumber(1);        //Overrides default line number of 0
         int word_count = 0;
@@ -41,26 +39,20 @@ public class Xref {
                 String[] tokens = input_string.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
                 String first = tokens[0];
 
+
                 word = new Word(first, word_count, line_track);
+                line_track = new ObjectList();
                 lpos = new LinePosition(line_no, word_pos);     //Create line position object
+                word.setInword(first);
 
                 lpos.setLine_no(lr.getLineNumber());
                 lpos.setWord_pos(word_pos);
 
-                //line_track.insert(lpos);      //Gives ClassCastingException - need to fix
+                line_track.addFirst(lpos);
                 word.setWord_count(word_count);
                 tree.insertBSTDup(word);
             }
         }
-        /*while (sc.hasNext()) {
-            String input_string = sc.next();
-            //Ignore all non-letter characters, convert to lower case
-            String[] tokens = input_string.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
-            String first = tokens[0];
-            word = new Word(first, word_count, line_track);
-            tree.insertBSTDup(word);
-        }
-        */
     }
 
     /**
@@ -68,8 +60,6 @@ public class Xref {
      */
     public void outputTree() {
         ObjectTreeNode p = tree.getRoot();
-        Word temp = (Word)p.getInfo();
         tree.inTrav(p);
-        System.out.printf("%s %d", temp.getInword(), temp.getWord_count());
     }
 }

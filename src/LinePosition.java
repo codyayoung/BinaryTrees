@@ -3,7 +3,7 @@
  * and current positions of words from input file.
  * Created by Cody Young on 5/4/17.
  */
-public class LinePosition extends Word {
+public class LinePosition {
     //Instance variables
     private int line_no;
     private int word_pos;
