@@ -21,7 +21,7 @@ public class Word implements TreeComparable {
      * Overloaded constructor for Word objects. Takes input string as argument.
      */
     public Word (String inword, int word_count) {
-        word_count = 0;
+        this.word_count = word_count;
         line_track = new ObjectList();
         this.inword = inword;
     }
@@ -54,15 +54,20 @@ public class Word implements TreeComparable {
      * @param r
      */
     public void operate (Object r) {
+        //If word exists in binary tree, do these things
+        Word w = (Word) r;
+        word_count++;       //Increment word count
+        //Get and set new line number where word is found again
 
+        //Get and set word position where word is found
     }
 
     /**
      * Visits node and prints out contents and info fields.
      */
     public void visit() {
-        System.out.printf("%-10s %10d \n",inword,((LinePosition)line_track.getFirst()).getLine_no());  //Prints out word
-        //System.out.printf("%10d \n", ((LinePosition)line_track.getFirst()).getLine_no());
+        System.out.printf("%-10s %10d %20d %d \n",inword,word_count,((LinePosition)line_track.getFirst()).getLine_no(),((LinePosition)line_track.getFirst()).getWord_pos());  //Prints out word
+        //Loop through list, print out each line number and word position word appears in (for loop)
     }
 
     /**
