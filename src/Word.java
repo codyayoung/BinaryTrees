@@ -4,7 +4,7 @@
  */
 public class Word implements TreeComparable {
     //Instance variables
-    private String inword;
+    private String inword;                //The word itself
     private int word_count;               //Word count
     private ObjectList line_track;        //Object list containing LinePosition objects,
                                           //which contains line number and word position.
@@ -20,7 +20,7 @@ public class Word implements TreeComparable {
     /**
      * Overloaded constructor for Word objects. Takes input string as argument.
      */
-    public Word (String inword, int word_count, ObjectList line_track) {
+    public Word (String inword, int word_count) {
         word_count = 0;
         line_track = new ObjectList();
         this.inword = inword;
@@ -54,13 +54,15 @@ public class Word implements TreeComparable {
      * @param r
      */
     public void operate (Object r) {
+
     }
 
     /**
-     * Visits node and prints out contents.
+     * Visits node and prints out contents and info fields.
      */
     public void visit() {
-        System.out.println(inword.toString());
+        System.out.printf("%-10s %10d \n",inword,((LinePosition)line_track.getFirst()).getLine_no());  //Prints out word
+        //System.out.printf("%10d \n", ((LinePosition)line_track.getFirst()).getLine_no());
     }
 
     /**

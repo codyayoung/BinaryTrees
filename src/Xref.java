@@ -10,7 +10,7 @@ public class Xref {
     //Instance variables
     private Word word;      //Word object
     private ObjectBinaryTree tree;      //Binary tree for Word objects
-    private ObjectList line_track;      //ObjectList attached to Word objects
+    //private ObjectList line_track;      //ObjectList attached to Word objects
     private LinePosition lpos;       //Object attached to Words used to track line number and word position
 
     /**
@@ -21,7 +21,7 @@ public class Xref {
     }
 
     /**
-     * Reads from getty.txt (after hashing) , wraps into Word objects, and places into object binary tree.
+     * Reads from getty.txt (after hashing), wraps into Word objects, and places into object binary tree.
      */
     public void scanGetty() throws IOException {
         LineNumberReader lr = new LineNumberReader(new FileReader("getty.txt"));
@@ -39,15 +39,16 @@ public class Xref {
                 String first = tokens[0];
 
 
-                word = new Word(first, word_count, line_track);
-                line_track = new ObjectList();
+                word = new Word(first, word_count);
                 lpos = new LinePosition(line_no, word_pos);     //Create line position object
-                word.setInword(first);
+                word.setInword(first);      //Set word object in word
 
-                lpos.setLine_no(lr.getLineNumber());
-                lpos.setWord_pos(word_pos);
+                lpos.setLine_no(lr.getLineNumber());   //Gets line number from LineNumberReader method
+                lpos.setWord_pos(word_pos);             //Doesn't really do anything yet
 
-                line_track.addFirst(lpos);
+                ObjectList lineTrack = word.getLine_track();
+                lineTrack.addFirst(lpos);          //Adds LinePosition Object to ObjectList
+                word.setLine_track(lineTrack);
                 word.setWord_count(word_count);
                 tree.insertBSTDup(word);
             }
