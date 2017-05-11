@@ -59,6 +59,8 @@ public class Xref {
      * Outputs each word in binary tree alphabetically, line number, word position, and word count.
      */
     public void outputTree() {
+        System.out.print('\n');
+        System.out.printf("Word List\n");
         ObjectTreeNode p = tree.getRoot();
         tree.inTrav(p);
     }
