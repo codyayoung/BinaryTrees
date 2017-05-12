@@ -25,7 +25,7 @@ public class Xref {
      */
     public void scanGetty() throws IOException {
         Scanner sc = new Scanner(new File("getty.txt"));
-        int word_count = 0;
+        int word_count = 1;
         int line_no = 1;
         int word_pos = 0;
 
