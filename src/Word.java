@@ -80,10 +80,11 @@ public class Word implements TreeComparable, Comparable{
     public void visit() {
         ObjectListNode p = line_track.getFirstNode();
         System.out.printf("%-10s %10d ",inword,word_count);  //Prints out word and count
+        System.out.print("                 ");
         //Prints out line number and word position for each word
         while(p != null) {
             LinePosition temp = (LinePosition)p.getInfo();
-            System.out.printf("%20d-%1d", temp.getLine_no(), temp.getWord_pos());
+            System.out.printf("%d-%d ", temp.getLine_no(), temp.getWord_pos());
             p = p.getNext();
         }
         System.out.print('\n');
