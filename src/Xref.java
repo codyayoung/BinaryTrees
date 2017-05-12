@@ -27,33 +27,32 @@ public class Xref {
         Scanner sc = new Scanner(new File("getty.txt"));
         int word_count = 0;
         int line_no = 1;
-        int word_pos = 1;
+        int word_pos = 0;
 
-        while(sc.hasNext()) {
-            String input_string = sc.next();
+        while(sc.hasNextLine()) {
+            String input_string = sc.nextLine();
             //Ignore all non-letter characters, convert to lower case
             String delims = "[\\W]+";
-            String[] tokens = input_string.split(delims);
-            String first = tokens[0];
+            String[] tokens = input_string.replaceAll("\\s*\\p{Punct}+\\s*$", "").toLowerCase().split(delims);
+            for(int i = 0; i < tokens.length; i++) {
+                String in_string = tokens[i];
 
-            word = new Word(first, word_count, lpos, line_track);   //Create new word object
+                lpos = new LinePosition(line_no, word_pos);                     //Create line position object
+                line_track = new ObjectList();                                  //Create new ObjectList
+                word = new Word(in_string, word_count, lpos, line_track);       //Create new Word object
 
-            for(String word: tokens) {
-                lpos = new LinePosition(line_no, word_pos);     //Create line position object
-                line_track = new ObjectList();                  //Create new ObjectList
+                word.setInword(in_string);
 
-                lpos.setLine_no(line_no);
-                if(sc.hasNextLine()) {
-                    word_pos++;
-                }
-                else {
-                    lpos.setWord_pos(word_pos);
-                    line_no++;
-                }
+                lpos.setLine_no(line_no);       //Set line number (testing variable)
+
+                word_pos++;
+                lpos.setWord_pos(word_pos);     //Set word position(testing variable)
+
+                line_track.insert(lpos);        //Insert LinePosition object into linked list
+                tree.insertBSTDup(word);        //Insert word into tree
             }
-            word.setInword(first);
-            line_track.insert(lpos);
-            tree.insertBSTDup(word);
+            line_no++;          //Increment line number
+            word_pos = 0;       //Reset word position
         }
     }
 
@@ -62,7 +61,7 @@ public class Xref {
      */
     public void outputTree() {
         System.out.print('\n');
-        System.out.printf("%-10s %15s %40s\n", "Word List", "Word Count", "Line Number - Word Position");
+        System.out.printf("%-10s %15s %39s\n", "Word List", "Word Count", "Line Number - Word Position");
         ObjectTreeNode p = tree.getRoot();
         tree.inTrav(p);
     }
