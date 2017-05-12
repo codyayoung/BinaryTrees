@@ -3,10 +3,15 @@
  * and current positions of words from input file.
  * Created by Cody Young on 5/4/17.
  */
-public class LinePosition {
+public class LinePosition implements Comparable{
     //Instance variables
     private int line_no;
     private int word_pos;
+
+    public int compareTo(Object o)
+    {
+        return 0;
+    }
 
     /**
      * Constructor method for LinePosition objects. Initializes instance variables.

@@ -31,30 +31,32 @@ public class Xref {
         String lin;
 
         while((lin = lr.readLine()) != null) {
-            Scanner sc = new Scanner(lin);
+            Scanner sc = new Scanner(lin);  //Remember - do not insert words in hash table into tree!
             while (sc.hasNext()) {
                 String input_string = sc.next();
                 //Ignore all non-letter characters, convert to lower case
-                //Need to remove punctuation instead of replacing it with a space
                 String delims = "[\\W]+";
                 String[] tokens = input_string.replaceAll("\\s*\\p{Punct}+\\s*$", "").toLowerCase().split(delims);
-                //String[] tokens = input_string.split(delims);
                 String first = tokens[0];
 
                 if(first.equals(""))
                     continue;
-                word = new Word(first, word_count);
+
                 lpos = new LinePosition(line_no, word_pos);     //Create line position object
-                word.setInword(first);      //Set word object in word
 
                 lpos.setLine_no(lr.getLineNumber());   //Gets line number from LineNumberReader method
-                lpos.setWord_pos(word_pos);             //Doesn't do much yet
-                word_pos++;
+                if(lin.equals(" ")) {
+                    word_pos = 1;
+                }
+                lpos.setLine_no(line_no);               //Sets line number
+                lpos.setWord_pos(word_pos);             //Sets word position
 
-                ObjectList lineTrack = word.getLine_track();
-                lineTrack.addFirst(lpos);          //Adds LinePosition Object to ObjectList
-                word.setLine_track(lineTrack);     //Adds ObjectList to Word object
-                //word.setWord_count(word_count);    //Sets word count
+                //word = new Word(first, word_count, lpos);
+                word = new Word(first, word_count, lpos);
+                word.setInword(first);      //Set word object in word
+               // line_track.insert(lpos);
+
+                word_pos++;
                 tree.insertBSTDup(word);           //Inserts word into tree
             }
         }
