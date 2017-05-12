@@ -10,7 +10,7 @@ public class Xref {
     //Instance variables
     private Word word;      //Word object
     private ObjectBinaryTree tree;      //Binary tree for Word objects
-    //private ObjectList line_track;      //ObjectList attached to Word objects
+    private ObjectList line_track;      //ObjectList attached to Word objects
     private LinePosition lpos;       //Object attached to Words used to track line number and word position
 
     /**
@@ -24,41 +24,36 @@ public class Xref {
      * Reads from getty.txt (after hashing), wraps into Word objects, and places into object binary tree.
      */
     public void scanGetty() throws IOException {
-        LineNumberReader lr = new LineNumberReader(new FileReader("getty.txt"));
-        int word_count = 1;
+        Scanner sc = new Scanner(new File("getty.txt"));
+        int word_count = 0;
         int line_no = 1;
-        int word_pos = 1;      //Position of word in line
-        String lin;
+        int word_pos = 1;
 
-        while((lin = lr.readLine()) != null) {
-            Scanner sc = new Scanner(lin);  //Remember - do not insert words in hash table into tree!
-            while (sc.hasNext()) {
-                String input_string = sc.next();
-                //Ignore all non-letter characters, convert to lower case
-                String delims = "[\\W]+";
-                String[] tokens = input_string.replaceAll("\\s*\\p{Punct}+\\s*$", "").toLowerCase().split(delims);
-                String first = tokens[0];
+        while(sc.hasNext()) {
+            String input_string = sc.next();
+            //Ignore all non-letter characters, convert to lower case
+            String delims = "[\\W]+";
+            String[] tokens = input_string.split(delims);
+            String first = tokens[0];
 
-                if(first.equals(""))
-                    continue;
+            word = new Word(first, word_count, lpos, line_track);   //Create new word object
 
+            for(String word: tokens) {
                 lpos = new LinePosition(line_no, word_pos);     //Create line position object
+                line_track = new ObjectList();                  //Create new ObjectList
 
-                lpos.setLine_no(lr.getLineNumber());   //Gets line number from LineNumberReader method
-                if(lin.equals(" ")) {
-                    word_pos = 1;
+                lpos.setLine_no(line_no);
+                if(sc.hasNextLine()) {
+                    word_pos++;
                 }
-                lpos.setLine_no(line_no);               //Sets line number
-                lpos.setWord_pos(word_pos);             //Sets word position
-
-                //word = new Word(first, word_count, lpos);
-                word = new Word(first, word_count, lpos);
-                word.setInword(first);      //Set word object in word
-               // line_track.insert(lpos);
-
-                word_pos++;
-                tree.insertBSTDup(word);           //Inserts word into tree
+                else {
+                    lpos.setWord_pos(word_pos);
+                    line_no++;
+                }
             }
+            word.setInword(first);
+            line_track.insert(lpos);
+            tree.insertBSTDup(word);
         }
     }
 

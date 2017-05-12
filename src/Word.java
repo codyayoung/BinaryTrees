@@ -8,7 +8,7 @@ public class Word implements TreeComparable, Comparable{
     private int word_count;               //Word count
     private ObjectList line_track;        //Object list containing LinePosition objects,
                                           //which contains line number and word position.
-    private LinePosition lpos;
+    private LinePosition lpos;            //LinePosition object to insert into linked list
 
     /**
      * Constructor method for Word objects. Initializes instance variables.
@@ -19,13 +19,13 @@ public class Word implements TreeComparable, Comparable{
     }
 
     /**
-     * Overloaded constructor for Word objects. Takes input string as argument.
+     * Overloaded constructor for Word objects. Takes input string and variables as argument.
      */
-    public Word (String inword, int word_count, LinePosition lpos) {
+    public Word (String inword, int word_count, LinePosition lpos, ObjectList line_track) {
         this.word_count = word_count;
-        line_track = new ObjectList();
         this.inword = inword;
         this.lpos = lpos;
+        this.line_track = line_track;
     }
 
     public LinePosition getLpos() {
