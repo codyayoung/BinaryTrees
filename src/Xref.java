@@ -61,7 +61,7 @@ public class Xref {
      */
     public void outputTree() {
         System.out.print('\n');
-        System.out.printf("%-10s %15s %39s\n", "Word List", "Word Count", "Line Number - Word Position");
+        System.out.printf("%-10s %15s %37s\n", "Word List", "Word Count", "Line Number-Word Position");
         ObjectTreeNode p = tree.getRoot();
         tree.inTrav(p);
     }
