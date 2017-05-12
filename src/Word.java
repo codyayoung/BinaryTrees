@@ -1,6 +1,7 @@
 /**
  * Creates Word class objects, which are placed into the object binary search tree.
- * Created by Cody Young on 5/4/17.
+ * @author Cody Young
+ * @version 5/19/17
  */
 public class Word implements TreeComparable, Comparable{
     //Instance variables

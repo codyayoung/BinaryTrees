@@ -3,8 +3,9 @@ import java.util.Scanner;
 
 /**
  * Outputs a cross-referenced listing of the text file. Performs traversal of binary tree.
- *
- * Created by Cody Young on 5/8/2017.
+ * Hases files into 
+ ** @author Cody Young
+ * @version 5/19/17
  */
 public class Xref {
     //Instance variables
