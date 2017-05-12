@@ -83,7 +83,7 @@ public class Word implements TreeComparable, Comparable{
         //Prints out line number and word position for each word
         while(p != null) {
             LinePosition temp = (LinePosition)p.getInfo();
-            System.out.printf("%20d-%-1d ", temp.getLine_no(), temp.getWord_pos());
+            System.out.printf("%20d-%1d", temp.getLine_no(), temp.getWord_pos());
             p = p.getNext();
         }
         System.out.print('\n');
