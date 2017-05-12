@@ -78,15 +78,25 @@ public class Word implements TreeComparable, Comparable{
      * Visits node and prints out contents and info fields.
      */
     public void visit() {
+        //TESTING PURPOSES STATEMENT
+        ObjectListNode p = line_track.getFirstNode();
         System.out.printf("%-10s %10d",inword,word_count);  //Prints out word and count
         //Prints out line number and word position for each word
-        System.out.printf("%20s-%d", ((LinePosition) line_track.getFirst()).getLine_no(), ((LinePosition) line_track.getFirst()).getWord_pos());
+        System.out.printf("%20s-%d ", ((LinePosition) line_track.getFirst()).getLine_no(), ((LinePosition) line_track.getFirst()).getWord_pos());
+        while(p != null) {
+            LinePosition temp = (LinePosition)p.getInfo();
+            System.out.printf("%2s-%d ", temp.getLine_no(), temp.getWord_pos());
+            p = p.getNext();
+        }
         System.out.print('\n');
+
         //Use the following while loop after all nodes are accounted for
-        /*ObjectListNode p = line_track.getFirstNode();
+        /*System.out.printf("%20s-%d", ((LinePosition) line_track.getFirst()).getLine_no(), ((LinePosition) line_track.getFirst()).getWord_pos());
+        ObjectListNode p = line_track.getFirstNode();
         while(p != null) {
             LinePosition temp = (LinePosition)p.getInfo();
             System.out.printf("%20s-%d ", temp.getLine_no(), temp.getWord_pos());
+            p = p.getNext();
         }
         System.out.print('\n');
         */
