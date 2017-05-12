@@ -10,7 +10,7 @@ public class LinePosition implements Comparable{
 
     public int compareTo(Object o)
     {
-        return 0;
+       return 0;
     }
 
     /**
@@ -28,7 +28,7 @@ public class LinePosition implements Comparable{
     public int getLine_no() {
         return line_no;
     }
-
+                                                                        
     /**
      * Sets line number of word.
      * @param line_no

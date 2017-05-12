@@ -92,7 +92,7 @@ public class Word implements TreeComparable, Comparable{
 
     /**
      * compareTo method overwrite to compare Word objects.
-     * @param w O oject to compare
+     * @param w O object to compare
      * @return If word w is greater than y, return 1 
      */
     public int compareTo(Object w) {
