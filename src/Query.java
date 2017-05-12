@@ -5,4 +5,5 @@
  * @version 5/18/17
  */
 public class Query {
+
 }

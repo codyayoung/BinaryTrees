@@ -44,16 +44,16 @@ public class Xref {
 
                 word.setInword(in_string);
 
-                lpos.setLine_no(line_no);       //Set line number (testing variable)
+                lpos.setLine_no(line_no);       //Set line number
 
                 word_pos++;
-                lpos.setWord_pos(word_pos);     //Set word position(testing variable)
+                lpos.setWord_pos(word_pos);     //Set word position
 
                 line_track.insert(lpos);        //Insert LinePosition object into linked list
                 tree.insertBSTDup(word);        //Insert word into tree
             }
             line_no++;          //Increment line number
-            word_pos = 0;       //Reset word position
+            word_pos = 0;       //Reset word position when new line is reached
         }
     }
 
