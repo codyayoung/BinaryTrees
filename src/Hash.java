@@ -5,4 +5,5 @@
  * @version 5/19/17
  */
 public class Hash {
+
 }

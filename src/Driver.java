@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.Scanner;
 
 /**
- * Created by Cody on 5/4/2017.
+ * Performs operations and runs main program.
+ * @author Cody Young   Palomar ID: 008372648
+ * @version 5/18/17
  */
 public class Driver {
 
