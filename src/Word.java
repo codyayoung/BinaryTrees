@@ -61,8 +61,8 @@ public class Word implements TreeComparable, Comparable{
     }
 
     /**
-     * Does an operation on something.
-     * @param r
+     * Performs specific operations on duplicate objects in the binary tree.
+     * @param r Duplicate object
      */
     public void operate (Object r) {
         //If word already exists in binary tree, do these things
@@ -71,7 +71,6 @@ public class Word implements TreeComparable, Comparable{
         //Get and set new line number where word is found again
         line_track.insert(w.getLpos());
         //Get and set word position where word is found
-        
         //Insert into ObjectList
     }
 
@@ -80,7 +79,7 @@ public class Word implements TreeComparable, Comparable{
      */
     public void visit() {
         ObjectListNode p = line_track.getFirstNode();
-        System.out.printf("%-10s %10d ",inword,word_count);  //Prints out word and count
+        System.out.printf("%-10s%10d ",inword,word_count);  //Prints out word and count
         System.out.print("                 ");
         //Prints out line number and word position for each word
         while(p != null) {

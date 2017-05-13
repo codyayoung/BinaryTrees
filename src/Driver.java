@@ -10,11 +10,9 @@ public class Driver {
 
     public static void main (String [] args) throws IOException {
         Xref x = new Xref();
-        Hash h = new Hash();
         int line_number = 0;
 
-        //h.getHash(omit);
-
+        //Start main program output
         Scanner sc = new Scanner(new File("getty.txt"));
 
         while(sc.hasNext()) {       //Outputs text file in entirety with line numbers
@@ -23,6 +21,8 @@ public class Driver {
             System.out.printf("%-5d  ", line_number);
             System.out.println(input_string);
         }
+        System.out.print('\n');
+        System.out.println("Initializing hash...done");
         x.scanGetty();
         x.outputTree();
     }
