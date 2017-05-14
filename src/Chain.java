@@ -2,18 +2,10 @@
  * Creates Chain objects, which are inserted into a hash table's linked list.
  * Stores key and value pairs.
  */
-public class Chain {
+public class Chain implements Comparable {
     //Instance variables
     private String instring;        //Word from omit file
     private int value;              //Hash value
-
-    /**
-     *
-     */
-    public Chain() {
-        this.instring = instring;
-        this.value = value;
-    }
 
     /**
      * Overloaded constructor method for Chain objects. Initializes instance variables.
@@ -37,5 +29,9 @@ public class Chain {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public int compareTo(Object o) {
+       return 1;
     }
 }

@@ -15,7 +15,8 @@ public class Hash {
     int chainsize = 0;
     int value = 0;
     ObjectList[] hashtable;             //Hash table - an array of linked lists
-    Chain new_chain;                        //ObjectListNode holding String and hash value
+    ObjectList nodechain;               //Name of each linked list in array
+    Chain chain;                        //ObjectListNode holding String and hash value
 
 
     /**
@@ -23,8 +24,9 @@ public class Hash {
      */
     public Hash() {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
+        nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
-            hashtable[i] = new ObjectList();
+            hashtable[i] = nodechain;               //Fill hash table with linked lists
         }
     }
 
@@ -35,9 +37,10 @@ public class Hash {
      */
     private int getHash(String s) {
         for(int i = 0; i < s.length(); i++) {
-            value = value*33 + s.charAt(i);
+             value = value*33 + s.charAt(i);
+            //value = ((value << 5)) + s.charAt(i);
         }
-        return value = value % TABLESIZE;
+        return value % TABLESIZE;
     }
 
     /**
@@ -45,11 +48,10 @@ public class Hash {
      * If it does, inserts key and value into hash table.
      */
     public void cookHash(String s) {
-        int j = getHash(s);     //Create hash value - currently bugged, assigns it nothing
-
-        for(int i = 0; i < TABLESIZE; i++) {
-            new_chain = new Chain(s, j); //Create new node with string and hash value
-            hashtable[i].insert(new_chain);     //Insert node into linked list
+        int j = getHash(s);     //Create hash value
+        chain = new Chain(s, j);            //Create chain object
+        for(int i = 0; i < hashtable.length; i++) {     //Loop through entire array of linked lists
+               hashtable[i].insert(chain);
         }
     }
 }

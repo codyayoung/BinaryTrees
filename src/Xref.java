@@ -32,7 +32,7 @@ public class Xref {
         int line_no = 1;
         int word_pos = 0;
         /*
-        while(om.hasNextLine()) {
+        while(om.hasNextLine()) {           /Hashes omitfile.txt
             String browns = om.nextLine();
             h.cookHash(browns);
         }
