@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,13 +14,14 @@ public class Xref {
     private ObjectBinaryTree tree;      //Binary tree for Word objects
     private ObjectList line_track;      //ObjectList attached to Word objects
     private LinePosition lpos;       //Object attached to Words used to track line number and word position
-    private Hash h = new Hash();
+    private Hash h;                  //Hash table and function
 
     /**
      * Constructor method for Xref objects. Initializes instance variables.
      */
     public Xref() throws IOException {
         tree = new ObjectBinaryTree();
+        h = new Hash();
     }
 
     /**
@@ -28,15 +30,19 @@ public class Xref {
     public void scanGetty() throws IOException {
         Scanner sc = new Scanner(new File("getty.txt"));
         Scanner om = new Scanner(new File("omitfile.txt"));
+        ArrayList<String> blacklist = new ArrayList<String>();
         int word_count = 1;
         int line_no = 1;
         int word_pos = 0;
-        /*
-        while(om.hasNextLine()) {           /Hashes omitfile.txt
-            String browns = om.nextLine();
-            h.cookHash(browns);
+
+        while(om.hasNextLine()) {
+            String word = om.nextLine();
+            blacklist.add(word);
+            for(String browns : blacklist) {
+                h.cookHash(browns);
+            }
         }
-        */
+
         while(sc.hasNextLine()) {
             String input_string = sc.nextLine();
             //Ignore all non-letter characters, convert to lower case
@@ -44,10 +50,8 @@ public class Xref {
             String[] tokens = input_string.replaceAll("\\s*\\p{Punct}+\\s*$", "").toLowerCase().split(delims);
             for(int i = 0; i < tokens.length; i++) {
                 String in_string = tokens[i];
-                h.cookHash(in_string);
-                //Get hash value
-                //If hash value matches table, skip word
-                //Else continue below
+                //h.cookHash(in_string);      //If hash value matches table, ignore - else continue below
+                //h.servHash(in_string);
                 lpos = new LinePosition(line_no, word_pos);                     //Create line position object
                 line_track = new ObjectList();                                  //Create new ObjectList
                 word = new Word(in_string, word_count, lpos, line_track);       //Create new Word object

@@ -6,6 +6,7 @@ public class Chain implements Comparable {
     //Instance variables
     private String instring;        //Word from omit file
     private int value;              //Hash value
+    private int length;             //Total length of linked list
 
     /**
      * Overloaded constructor method for Chain objects. Initializes instance variables.
@@ -31,6 +32,13 @@ public class Chain implements Comparable {
         this.value = value;
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
     public int compareTo(Object o) {
        return 1;
     }

@@ -14,8 +14,9 @@ public class Hash {
     int collisions = 0;
     int chainsize = 0;
     int value = 0;
+    int len = 0;                        //Length of chain in linked list
     ObjectList[] hashtable;             //Hash table - an array of linked lists
-    ObjectList nodechain;               //Name of each linked list in array
+    ObjectList nodechain;
     Chain chain;                        //ObjectListNode holding String and hash value
 
 
@@ -26,7 +27,7 @@ public class Hash {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
         nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
-            hashtable[i] = nodechain;               //Fill hash table with linked lists
+            hashtable[i] = nodechain;
         }
     }
 
@@ -37,10 +38,18 @@ public class Hash {
      */
     private int getHash(String s) {
         for(int i = 0; i < s.length(); i++) {
-             value = value*33 + s.charAt(i);
+             value = value * 33 + s.charAt(i);
             //value = ((value << 5)) + s.charAt(i);
         }
         return value % TABLESIZE;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     /**
@@ -50,8 +59,37 @@ public class Hash {
     public void cookHash(String s) {
         int j = getHash(s);     //Create hash value
         chain = new Chain(s, j);            //Create chain object
-        for(int i = 0; i < hashtable.length; i++) {     //Loop through entire array of linked lists
-               hashtable[i].insert(chain);
+        for (int i = 0; i < hashtable.length; i++) {     //Loop through entire array of linked lists
+            hashtable[i] = nodechain;
+            nodechain.addFirst(chain);
+            //If new hash value from chain already exists in list, insert another node
+            if(nodechain.getFirst().equals(chain.getValue())) {
+                    hashtable[i].insert(chain);
+                    len++;          //Increment length and set it
+                    chain.setLength(len);
+                    collisions++;   //Increment number of collisions
+                    break;
+                }
+            else {
+                hashtable[i].addFirst(chain);
+                 }
+            }
         }
+
+    /**
+     * Gets hash value of input string.
+     * @param s Input string from file.
+     * @return Hash value
+     */
+    public int servHash(String s) {
+        return getHash(s);
+    }
+
+    /**
+     * Gets total number of collisions after hashing.
+     * @return Number of collisions
+     */
+    public int getCollisions() {
+        return collisions;
     }
 }
