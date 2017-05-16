@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
 /**
  * In house hash function for input strings.
  * Hashes strings, places key-value pairs in tables, and performs lookups.
@@ -14,6 +10,7 @@ public class Hash {
     private int collisions = 0;                 //Number of collisions
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
+    private float avg_len = 0;                  //Average length of linked list
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
     private Word chain;                         //Key to hash
@@ -46,8 +43,9 @@ public class Hash {
      * @return Index value as int
      */
     private int getHash(String s) {
+        value = 0;
         for(int i = 0; i < s.length(); i++) {
-             value = value * 33 + s.charAt(i);
+            value = value * 33 + s.charAt(i);
         }
         return Math.abs(value % TABLESIZE);
     }
@@ -68,20 +66,17 @@ public class Hash {
         int i = getHash(s);     //Create hash value
         chain = new Word(s, i);         //Create new Word object with input string and hash value
         if(hashtable[i] == null) {
-            nodechain = new ObjectList();
-            hashtable[i] = nodechain;
-            nodechain.insert(chain);
+            ObjectList newChain = new ObjectList();
+            newChain.insert(chain);
+            hashtable[i] = newChain;
         }
         else {
-            ObjectListNode p = nodechain.getFirstNode();
-            while(p != null) {
-                Word temp = (Word)p.getInfo();
-                p = p.getNext();
-                if(temp.getKey() == chain.getKey()) {
-                    nodechain.insert(chain);
-                }
-            }
-         }
+            ObjectList oldChain = hashtable[i];
+            collisions++;
+            len++;
+            oldChain.addLast(chain);
+            hashtable[i] = oldChain;
+        }
     }
 
     /**
@@ -91,6 +86,20 @@ public class Hash {
      */
     public int servHash(String s) {
         return getHash(s);
+    }
+
+    /**
+     * Look up method for hash table.
+     * @param s String to look up
+     * @return True if found, false if not
+     */
+    public boolean containsHash(String s) {
+        int i = getHash(s);      //Get hash value
+        ObjectList yeezychain = hashtable[i];    //Check list at index value
+        if(yeezychain == null)
+            return false;
+        Word kanye = new Word(s, i);
+        return yeezychain.contains(kanye);
     }
 
     /**
@@ -123,5 +132,13 @@ public class Hash {
      */
     public void setLen(int len) {
         this.len = len;
+    }
+
+    public float getAvg_len() {
+        return avg_len;
+    }
+
+    public void setAvg_len(float avg_len) {
+        this.avg_len = avg_len;
     }
 }

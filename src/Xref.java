@@ -54,22 +54,26 @@ public class Xref {
             //Ignore all non-letter characters, convert to lower case
             String delims = "[\\W]+";
             String[] tokens = input_string.replaceAll("\\s*\\p{Punct}+\\s*$", "").toLowerCase().split(delims);
-            for(int i = 0; i < tokens.length; i++) {
+            for (int i = 0; i < tokens.length; i++) {
                 String in_string = tokens[i];
-                h.servHash(in_string);              //Get hash value of main string
-                //If hash value of main string matches blacklist, break
-                lpos = new LinePosition(line_no, word_pos);                     //Create line position object
-                line_track = new ObjectList();                                  //Create new ObjectList
-                word = new Word(in_string, word_count, lpos, line_track);       //Create new Word object
+                if (h.containsHash(in_string)) {
+                    break;
+                }
+                //If hash value of main string matches blacklist, break - else continue
+                else {
+                    lpos = new LinePosition(line_no, word_pos);                     //Create line position object
+                    line_track = new ObjectList();                                  //Create new ObjectList
+                    word = new Word(in_string, word_count, lpos, line_track);       //Create new Word object
 
-                word.setInword(in_string);      //Set word
-                lpos.setLine_no(line_no);       //Set line number
+                    word.setInword(in_string);      //Set word
+                    lpos.setLine_no(line_no);       //Set line number
 
-                word_pos++;
-                lpos.setWord_pos(word_pos);     //Set word position
+                    word_pos++;
+                    lpos.setWord_pos(word_pos);     //Set word position
 
-                line_track.insert(lpos);        //Insert LinePosition object into linked list
-                tree.insertBSTDup(word);        //Insert word into tree
+                    line_track.insert(lpos);        //Insert LinePosition object into linked list
+                    tree.insertBSTDup(word);        //Insert word into tree
+                }
             }
             line_no++;          //Increment line number
             word_pos = 0;       //Reset word position when new line is reached
