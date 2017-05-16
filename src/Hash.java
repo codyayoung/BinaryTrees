@@ -45,7 +45,7 @@ public class Hash {
     private int getHash(String s) {
         value = 0;
         for(int i = 0; i < s.length(); i++) {
-            value = value * 33 + s.charAt(i);
+            value = (value << 7) + s.charAt(i);      //Left shfit for each character in string 
         }
         return Math.abs(value % TABLESIZE);
     }
@@ -80,12 +80,27 @@ public class Hash {
     }
 
     /**
-     * Gets hash value of input string.
-     * @param s Input string from file.
-     * @return Hash value
+     * Outputs hash table.
      */
-    public int servHash(String s) {
-        return getHash(s);
+    public void outputHash() {
+        System.out.print('\n');
+        System.out.println("HASH TABLE");
+        System.out.println("-----------");
+        System.out.printf("%-10s %15s\n", "Index", "Key\n");
+        for(int i = 0; i < hashtable.length; i++) {
+            if(hashtable[i] == null) {
+                continue;
+            }
+            else {
+                ObjectList pablochain = hashtable[i];
+                ObjectListNode kim = pablochain.getFirstNode();
+                while(kim != null) {
+                    Word north = (Word)kim.getInfo();
+                    System.out.printf("%-10d %15s\n", north.getKey(), north.getInword());
+                    kim = kim.getNext();
+                }
+            }
+        }
     }
 
     /**

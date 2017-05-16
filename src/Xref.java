@@ -45,7 +45,10 @@ public class Xref {
         }
 
         System.out.println("Initializing hash...done");
-        //System.out.println("Collisions:" + h.getCollisions());
+        System.out.println("Collisions:" + h.getCollisions());
+        System.out.print('\n');
+        System.out.println("Description: Takes input string, shifts each character's bit in string to the left by 7,");
+        System.out.println("sums value and divides by the modulus, which is the table size.");
         //Print average chain size(float)
         //Print maximum chain size
 
@@ -78,6 +81,7 @@ public class Xref {
             line_no++;          //Increment line number
             word_pos = 0;       //Reset word position when new line is reached
         }
+        h.outputHash();
     }
 
     /**
@@ -85,7 +89,9 @@ public class Xref {
      */
     public void outputTree() {
         System.out.print('\n');
-        System.out.printf("%-10s %15s %37s\n", "Word List", "Word Count", "Line Number-Word Position");
+        System.out.println("X-REFERENCE");
+        System.out.println("-----------");
+        System.out.printf("%-10s %15s %37s\n", "Word List", "Word Count", "Line Number-Word Position\n");
         ObjectTreeNode p = tree.getRoot();
         tree.inTrav(p);
     }
