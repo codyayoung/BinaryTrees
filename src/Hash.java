@@ -15,7 +15,7 @@ public class Hash {
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
-    private ObjectList nodechain;
+    private ObjectListNode nodechain;
     private Chain chain;                        //ObjectListNode holding String and hash value
 
 
@@ -24,7 +24,7 @@ public class Hash {
      */
     public Hash() {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
-        nodechain = new ObjectList();
+        nodechain = new ObjectListNode();
         for(int i = 0; i < TABLESIZE; i++) {
             hashtable[i] = null;
         }
@@ -35,7 +35,7 @@ public class Hash {
      */
     public Hash(ObjectList[] hashtable) {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
-        nodechain = new ObjectList();
+        nodechain = new ObjectListNode();
         for(int i = 0; i < TABLESIZE; i++) {
             hashtable[i] = null;
         }
@@ -50,7 +50,7 @@ public class Hash {
         for(int i = 0; i < s.length(); i++) {
              value = value * 33 + s.charAt(i);
         }
-        return value % TABLESIZE;
+        return Math.abs(value % TABLESIZE);
     }
 
     public int getValue() {
@@ -68,19 +68,7 @@ public class Hash {
     public void cookHash(String s) {
         int j = getHash(s);     //Create hash value
         chain = new Chain(s, j);            //Create chain object
-        for (int i = 0; i < hashtable.length; i++) {
-            if(hashtable[i] == null) {
-                nodechain = new ObjectList();
-                hashtable[i] = nodechain;
-                nodechain.addFirst(chain);
-                break;          //Breaks out of loop and grabs next word from omitfile.txt
-            }
-            //If new hash value from chain already exists in list, insert another node
-            //This will increment number of collisions by 1
-            else if (nodechain.getFirst().equals(chain.getValue())) {
-                   nodechain.insert(chain);
-                }
-            }
+
         }
 
     /**
