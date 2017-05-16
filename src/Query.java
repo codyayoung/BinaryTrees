@@ -24,6 +24,5 @@ public class Query {
     public void findWord() {
         System.out.println("Enter word to search:");
 
-
     }
 }

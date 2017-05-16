@@ -10,6 +10,7 @@ public class Word implements TreeComparable, Comparable{
     private ObjectList line_track;        //Object list containing LinePosition objects,
                                           //which contains line number and word position.
     private LinePosition lpos;            //LinePosition object to insert into linked list
+    private int key;                      //Hash value - determines which index to store in hash table
 
     /**
      * Constructor method for Word objects. Initializes instance variables.
@@ -27,6 +28,14 @@ public class Word implements TreeComparable, Comparable{
         this.inword = inword;
         this.lpos = lpos;
         this.line_track = line_track;
+    }
+
+    /**
+     * Overloaded constructor for Word objects. Takes input string and hash value as argument.
+     */
+    public Word(String inword, int key) {
+        this.inword = inword;
+        this.key = key;
     }
 
     public LinePosition getLpos() {
@@ -114,5 +123,13 @@ public class Word implements TreeComparable, Comparable{
 
     public void setLine_track(ObjectList line_track) {
         this.line_track = line_track;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 }

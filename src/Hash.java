@@ -15,16 +15,15 @@ public class Hash {
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
-    private ObjectListNode nodechain;
-    private Chain chain;                        //ObjectListNode holding String and hash value
-
+    private ObjectList nodechain;
+    private Word chain;                         //Key to hash
 
     /**
      * Constructor for Hash objects. Creates an array of Object linked lists.
      */
     public Hash() {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
-        nodechain = new ObjectListNode();
+        nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
             hashtable[i] = null;
         }
@@ -35,7 +34,7 @@ public class Hash {
      */
     public Hash(ObjectList[] hashtable) {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
-        nodechain = new ObjectListNode();
+        nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
             hashtable[i] = null;
         }
@@ -66,10 +65,24 @@ public class Hash {
      * If it does, inserts key and value into hash table.
      */
     public void cookHash(String s) {
-        int j = getHash(s);     //Create hash value
-        chain = new Chain(s, j);            //Create chain object
-
+        int i = getHash(s);     //Create hash value
+        chain = new Word(s, i);         //Create new Word object with input string and hash value
+        if(hashtable[i] == null) {
+            nodechain = new ObjectList();
+            hashtable[i] = nodechain;
+            nodechain.insert(chain);
         }
+        else {
+            ObjectListNode p = nodechain.getFirstNode();
+            while(p != null) {
+                Word temp = (Word)p.getInfo();
+                p = p.getNext();
+                if(temp.getKey() == chain.getKey()) {
+                    nodechain.insert(chain);
+                }
+            }
+         }
+    }
 
     /**
      * Gets hash value of input string.
