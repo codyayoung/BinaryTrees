@@ -70,6 +70,7 @@ public class Hash {
         chain = new Chain(s, j);            //Create chain object
         for (int i = 0; i < hashtable.length; i++) {
             if(hashtable[i] == null) {
+                nodechain = new ObjectList();
                 hashtable[i] = nodechain;
                 nodechain.addFirst(chain);
                 break;          //Breaks out of loop and grabs next word from omitfile.txt
