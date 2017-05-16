@@ -11,13 +11,12 @@ import java.util.Scanner;
 public class Hash {
     //Instance variables and constants
     final private int TABLESIZE = 37;   //Size of table
-    int collisions = 0;
-    int chainsize = 0;
-    int value = 0;
-    int len = 0;                        //Length of chain in linked list
-    ObjectList[] hashtable;             //Hash table - an array of linked lists
-    ObjectList nodechain;
-    Chain chain;                        //ObjectListNode holding String and hash value
+    private int collisions = 0;                 //Number of collisions
+    private int value = 0;
+    private int len = 0;                        //Length of linked list - number of nodes
+    private ObjectList[] hashtable;             //Hash table - an array of linked lists
+    private ObjectList nodechain;
+    private Chain chain;                        //ObjectListNode holding String and hash value
 
 
     /**
@@ -27,7 +26,18 @@ public class Hash {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
         nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
-            hashtable[i] = nodechain;
+            hashtable[i] = null;
+        }
+    }
+
+    /**
+     * Overloaded constructor for Hash objects. Takes hash table of specified size as argument.
+     */
+    public Hash(ObjectList[] hashtable) {
+        hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
+        nodechain = new ObjectList();
+        for(int i = 0; i < TABLESIZE; i++) {
+            hashtable[i] = null;
         }
     }
 
@@ -39,7 +49,6 @@ public class Hash {
     private int getHash(String s) {
         for(int i = 0; i < s.length(); i++) {
              value = value * 33 + s.charAt(i);
-            //value = ((value << 5)) + s.charAt(i);
         }
         return value % TABLESIZE;
     }
@@ -59,20 +68,17 @@ public class Hash {
     public void cookHash(String s) {
         int j = getHash(s);     //Create hash value
         chain = new Chain(s, j);            //Create chain object
-        for (int i = 0; i < hashtable.length; i++) {     //Loop through entire array of linked lists
-            hashtable[i] = nodechain;
-            nodechain.addFirst(chain);
+        for (int i = 0; i < hashtable.length; i++) {
+            if(hashtable[i] == null) {
+                hashtable[i] = nodechain;
+                nodechain.addFirst(chain);
+                break;          //Breaks out of loop and grabs next word from omitfile.txt
+            }
             //If new hash value from chain already exists in list, insert another node
-            if(nodechain.getFirst().equals(chain.getValue())) {
-                    hashtable[i].insert(chain);
-                    len++;          //Increment length and set it
-                    chain.setLength(len);
-                    collisions++;   //Increment number of collisions
-                    break;
+            //This will increment number of collisions by 1
+            else if (nodechain.getFirst().equals(chain.getValue())) {
+                   nodechain.insert(chain);
                 }
-            else {
-                hashtable[i].addFirst(chain);
-                 }
             }
         }
 
@@ -91,5 +97,29 @@ public class Hash {
      */
     public int getCollisions() {
         return collisions;
+    }
+
+    /**
+     * Sets number of collisions after hashing.
+     * @param collisions Number of collisions
+     */
+    public void setCollisions(int collisions) {
+        this.collisions = collisions;
+    }
+
+    /**
+     * Gets length of linked list(bucket) in hash table.
+     * @return Length of linked list
+     */
+    public int getLen() {
+        return len;
+    }
+
+    /**
+     * Sets length of linked list(bucket) in hash table.
+     * @param len Length of linked list
+     */
+    public void setLen(int len) {
+        this.len = len;
     }
 }

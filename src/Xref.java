@@ -20,6 +20,7 @@ public class Xref {
      * Constructor method for Xref objects. Initializes instance variables.
      */
     public Xref() throws IOException {
+
         tree = new ObjectBinaryTree();
         h = new Hash();
     }
@@ -35,13 +36,18 @@ public class Xref {
         int line_no = 1;
         int word_pos = 0;
 
-        while(om.hasNextLine()) {
+        while(om.hasNextLine()) {           //Reads input from omit file, puts in string arraylist
             String word = om.nextLine();
             blacklist.add(word);
-            for(String browns : blacklist) {
-                h.cookHash(browns);
-            }
         }
+        for(String browns : blacklist) {    //Hashes each word in string arraylist
+            h.cookHash(browns);
+        }
+
+        System.out.println("Initializing hash...done");
+        //System.out.println("Collisions:" + h.getCollisions());
+        //Print average chain size(float)
+        //Print maximum chain size
 
         while(sc.hasNextLine()) {
             String input_string = sc.nextLine();
@@ -50,8 +56,8 @@ public class Xref {
             String[] tokens = input_string.replaceAll("\\s*\\p{Punct}+\\s*$", "").toLowerCase().split(delims);
             for(int i = 0; i < tokens.length; i++) {
                 String in_string = tokens[i];
-                //h.cookHash(in_string);      //If hash value matches table, ignore - else continue below
-                //h.servHash(in_string);
+                h.servHash(in_string);              //Get hash value of main string
+                //If hash value of main string matches blacklist, break
                 lpos = new LinePosition(line_no, word_pos);                     //Create line position object
                 line_track = new ObjectList();                                  //Create new ObjectList
                 word = new Word(in_string, word_count, lpos, line_track);       //Create new Word object

@@ -5,5 +5,7 @@
  * @version 5/18/17
  */
 public class Query {
-
+    //Take user input
+    //Use searchBST method
+    //If found, return word, line number, and word position objects
 }

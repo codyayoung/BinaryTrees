@@ -22,7 +22,6 @@ public class Driver {
             System.out.println(input_string);
         }
         System.out.print('\n');
-        System.out.println("Initializing hash...done");
         x.scanGetty();
         x.outputTree();
     }

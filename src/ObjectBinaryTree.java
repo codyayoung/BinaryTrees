@@ -109,7 +109,7 @@ public class ObjectBinaryTree implements ObjectBinaryTreeInterface {
     public void inTrav(ObjectTreeNode tree) {
         if (tree != null) {
             inTrav(tree.getLeft());
-            ((TreeComparable)tree.getInfo()).visit();
+                ((TreeComparable)tree.getInfo()).visit();
             inTrav(tree.getRight());
         }
     }
