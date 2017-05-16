@@ -45,12 +45,12 @@ public class Xref {
         }
 
         System.out.println("Initializing hash...done");
-        System.out.println("Collisions:" + h.getCollisions());
+        System.out.println("Collisions: " + h.getCollisions());    //Prints number of collisions
+        System.out.println("Longest chain: " + h.getMaxlen());      //Prints length of longest list
+        System.out.printf("Average chain size: %.2f", h.getAvg_len());  //Print average chain size to two decimal places
         System.out.print('\n');
-        System.out.println("Description: Takes input string, shifts each character's bit in string to the left by 7,");
+        System.out.println("Description: Uses chaining. Takes input string, shifts each character's bit in string to the left by 7,");
         System.out.println("sums value and divides by the modulus, which is the table size.");
-        //Print average chain size(float)
-        //Print maximum chain size
 
         while(sc.hasNextLine()) {
             String input_string = sc.nextLine();

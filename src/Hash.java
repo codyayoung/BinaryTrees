@@ -1,6 +1,7 @@
 /**
  * In house hash function for input strings.
  * Hashes strings, places key-value pairs in tables, and performs lookups.
+ * Implements separate chaining for collision resolutions.
  * @author Cody Young
  * @version 5/19/17
  */
@@ -10,7 +11,9 @@ public class Hash {
     private int collisions = 0;                 //Number of collisions
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
-    private float avg_len = 0;                  //Average length of linked list
+    private int maxlen = 0;                     //Maximum length of linked list - total number of nodes
+    private float avg_len;                  //Average length of linked list
+    private int num_keys = 0;                   //Number of elements in hash table
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
     private Word chain;                         //Key to hash
@@ -45,7 +48,7 @@ public class Hash {
     private int getHash(String s) {
         value = 0;
         for(int i = 0; i < s.length(); i++) {
-            value = (value << 7) + s.charAt(i);      //Left shfit for each character in string 
+            value = (value << 7) + s.charAt(i);      //Left shift for each character in string
         }
         return Math.abs(value % TABLESIZE);
     }
@@ -69,23 +72,29 @@ public class Hash {
             ObjectList newChain = new ObjectList();
             newChain.insert(chain);
             hashtable[i] = newChain;
+            num_keys++;                //Increment overall number of elements in hash table
         }
         else {
             ObjectList oldChain = hashtable[i];
-            collisions++;
-            len++;
+            collisions++;           //Increment collisions
+            len++;                  //Increment length of chain
+            num_keys++;
             oldChain.addLast(chain);
             hashtable[i] = oldChain;
         }
+        if(len > maxlen) {
+            maxlen = len;
+        }
+        avg_len = num_keys/TABLESIZE;
     }
 
     /**
-     * Outputs hash table.
+     * Outputs hash table. Prints index and key.
      */
     public void outputHash() {
         System.out.print('\n');
         System.out.println("HASH TABLE");
-        System.out.println("-----------");
+        System.out.println("----------");
         System.out.printf("%-10s %15s\n", "Index", "Key\n");
         for(int i = 0; i < hashtable.length; i++) {
             if(hashtable[i] == null) {
@@ -155,5 +164,17 @@ public class Hash {
 
     public void setAvg_len(float avg_len) {
         this.avg_len = avg_len;
+    }
+
+    /**
+     * Gets the longest linked list in the table.
+     * @return Length of longest list
+     */
+    public int getMaxlen() {
+        return maxlen;
+    }
+
+    public void setMaxlen(int maxlen) {
+        this.maxlen = maxlen;
     }
 }
