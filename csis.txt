@@ -29,6 +29,38 @@ Description: Uses chaining. Takes input string, shifts each character's bit in s
 sums value and divides by the modulus, which is the table size.
 Note: Duplicate indexes in the table indicate chained values.
 
+HASH TABLE
+----------
+Index                 Key
+
+1                   their
+4                    have
+6                     was
+7                     all
+8                      in
+8                   which
+10                   were
+11                     to
+12                   from
+13                     is
+14                     it
+15                    now
+16                because
+19                   with
+20                    its
+21                    the
+22                    had
+23                      a
+24                  every
+28                     of
+29                    for
+30                  after
+30                  there
+31                     so
+33                    and
+35                   that
+36                     on
+
 X-REFERENCE
 -----------
 Word List       Word Count            Line Number-Word Position
@@ -156,7 +188,23 @@ SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)
 Enter word:
 dedicate   2   6-6 9-10 
 Enter word:
+devotion   2   17-5 18-4 
+Enter word:
+gave   2   7-8 17-9 
+Enter word:
 men   2   3-2 10-9 
+Enter word:
+not   5   9-9 9-13 10-4 19-4 21-4 
+Enter word:
+people   3   20-6 21-1 21-2 
+Enter word:
+resolve   1   18-8 
+Enter word:
+us   3   13-12 15-6 16-6 
+Enter word:
+vain   1   19-6 
+Enter word:
+war   2   4-3 6-3 
 Enter word:
 soldier
 ERROR: Word not found.

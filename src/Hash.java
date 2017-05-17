@@ -1,4 +1,3 @@
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -26,13 +25,14 @@ public class Hash {
     /**
      * Constructor for Hash objects. Creates an array of Object linked lists.
      */
-    public Hash() throws IOException {
+    public Hash(PrintWriter foutput) throws IOException {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
         nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
             hashtable[i] = null;
         }
-        foutput = new PrintWriter(new FileWriter("csis.txt"));
+         this.foutput = foutput;
+        //foutput = new PrintWriter(new FileWriter("csis.txt"));
     }
 
     /**

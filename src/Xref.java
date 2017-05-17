@@ -23,7 +23,7 @@ public class Xref {
      */
     public Xref(PrintWriter foutput) throws IOException {
         tree = new ObjectBinaryTree();
-        h = new Hash();
+        h = new Hash(foutput);
         q = new Query(tree, foutput);
         this.foutput = foutput;
     }
