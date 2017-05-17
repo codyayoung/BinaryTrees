@@ -13,7 +13,8 @@ public class Hash {
     private int len = 0;                        //Length of linked list - number of nodes
     private int maxlen = 0;                     //Maximum length of linked list - total number of nodes
     private float avg_len;                      //Average length of linked list
-    private float num_keys = 0;                   //Number of elements in hash table
+    private float num_keys = 0;                 //Number of elements in hash table
+    private float alpha;                      //Load factor
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
     private Word chain;                         //Key to hash
@@ -22,17 +23,6 @@ public class Hash {
      * Constructor for Hash objects. Creates an array of Object linked lists.
      */
     public Hash() {
-        hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
-        nodechain = new ObjectList();
-        for(int i = 0; i < TABLESIZE; i++) {
-            hashtable[i] = null;
-        }
-    }
-
-    /**
-     * Overloaded constructor for Hash objects. Takes hash table of specified size as argument.
-     */
-    public Hash(ObjectList[] hashtable) {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
         nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
@@ -134,36 +124,9 @@ public class Hash {
         return collisions;
     }
 
-    /**
-     * Sets number of collisions after hashing.
-     * @param collisions Number of collisions
-     */
-    public void setCollisions(int collisions) {
-        this.collisions = collisions;
-    }
-
-    /**
-     * Gets length of linked list(bucket) in hash table.
-     * @return Length of linked list
-     */
-    public float getLen() {
-        return len;
-    }
-
-    /**
-     * Sets length of linked list(bucket) in hash table.
-     * @param len Length of linked list
-     */
-    public void setLen(int len) {
-        this.len = len;
-    }
 
     public float getAvg_len() {
         return avg_len;
-    }
-
-    public void setAvg_len(float avg_len) {
-        this.avg_len = avg_len;
     }
 
     /**
@@ -174,15 +137,8 @@ public class Hash {
         return maxlen;
     }
 
-    public void setMaxlen(int maxlen) {
-        this.maxlen = maxlen;
-    }
-
-    public float getNum_keys() {
-        return num_keys;
-    }
-
-    public void setNum_keys(int num_keys) {
-        this.num_keys = num_keys;
+    public float getAlpha() {
+        alpha = num_keys / TABLESIZE;
+        return alpha;
     }
 }
