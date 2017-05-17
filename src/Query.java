@@ -24,17 +24,11 @@ public class Query {
         System.out.println("SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)");
         System.out.println("--------------------------------------------");
         System.out.println("Enter word to search:");
-        try {
-
-            Scanner fj = new Scanner(System.in);
-            String input = fj.nextLine();
-            Word target = new Word(input);
-            tree.searchBST(target.getInword());
-            target.visit();
-
-        } catch (InputMismatchException a) {
-            System.out.println("Error: Word not found.");
-        }
+        Scanner fj = new Scanner(System.in);
+        String input = fj.nextLine();
+        Word target = new Word(input);
+        tree.searchBST(target);
+        target.visit();
     }
 }
 
