@@ -38,6 +38,13 @@ public class Word implements TreeComparable, Comparable{
         this.key = key;
     }
 
+    /**
+     * Overloaded constructor for Word objects. Takes input string as argument.
+     */
+    public Word(String inword) {
+        this.inword = inword;
+    }
+
     public LinePosition getLpos() {
         return lpos;
     }
@@ -62,12 +69,6 @@ public class Word implements TreeComparable, Comparable{
         this.inword = inword;
     }
 
-    /**
-     * Adds a LinePosition object to the ObjectList.
-     */
-    public void addLinePos(LinePosition linepos) {
-        line_track.insert(linepos);
-    }
 
     /**
      * Performs specific operations on duplicate objects in the binary tree.
@@ -109,27 +110,8 @@ public class Word implements TreeComparable, Comparable{
         return inword.compareTo(y.getInword());
     }
 
-    public int getWord_count() {
-        return word_count;
-    }
-
-    public void setWord_count(int word_count) {
-        this.word_count = word_count;
-    }
-
-    public ObjectList getLine_track() {
-        return line_track;
-    }
-
-    public void setLine_track(ObjectList line_track) {
-        this.line_track = line_track;
-    }
-
     public int getKey() {
         return key;
     }
 
-    public void setKey(int key) {
-        this.key = key;
-    }
 }

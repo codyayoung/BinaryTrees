@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -7,25 +9,32 @@ import java.util.Scanner;
  */
 public class Query {
     //Instance variables
-    ObjectBinaryTree target;
-
-    /**
-     * Constructor method for Query objects.
-     */
-    public Query() {
-
-    }
+    ObjectBinaryTree tree;
+    Word target;
 
     /**
      * Overloaded constructor method for Query objects - takes binary tree as argument.
      */
-    public Query(ObjectBinaryTree target) {
-        this.target = target;
+    public Query(ObjectBinaryTree tree) {
+        target = new Word();
+        this.tree = tree;
     }
 
-    public void findWord() {
+    public void findWord() throws IOException {
+        System.out.println("SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)");
+        System.out.println("--------------------------------------------");
         System.out.println("Enter word to search:");
-        Scanner finput = new Scanner(System.in);
+        try {
 
+            Scanner fj = new Scanner(System.in);
+            String input = fj.nextLine();
+            Word target = new Word(input);
+            tree.searchBST(target);
+            target.visit();
+
+        } catch (InputMismatchException a) {
+            System.out.println("Error: Word not found.");
+        }
     }
 }
+

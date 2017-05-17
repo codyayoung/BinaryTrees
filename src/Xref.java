@@ -15,14 +15,15 @@ public class Xref {
     private ObjectList line_track;      //ObjectList attached to Word objects
     private LinePosition lpos;       //Object attached to Words used to track line number and word position
     private Hash h;                  //Hash table and function
+    private Query q;                //Used for search function
 
     /**
      * Constructor method for Xref objects. Initializes instance variables.
      */
     public Xref() throws IOException {
-
         tree = new ObjectBinaryTree();
         h = new Hash();
+        q = new Query(tree);
     }
 
     /**
@@ -36,11 +37,11 @@ public class Xref {
         int line_no = 1;
         int word_pos = 0;
 
-        while(om.hasNextLine()) {           //Reads input from omit file, puts in string arraylist
+        while(om.hasNextLine()) {           //Reads input from omit file, puts in string arraylist - the blacklist
             String word = om.nextLine();
             blacklist.add(word);
         }
-        for(String browns : blacklist) {    //Hashes each word in string arraylist
+        for(String browns : blacklist) {    //Hashes each word in blacklist
             h.cookHash(browns);
         }
 
@@ -61,9 +62,9 @@ public class Xref {
             for (int i = 0; i < tokens.length; i++) {
                 String in_string = tokens[i];
                 if (h.containsHash(in_string)) {
-                    break;
+                    continue;
                 }
-                //If hash value of main string matches blacklist, break - else continue
+                //If hash value of main string matches blacklist, ignore - else continue
                 else {
                     lpos = new LinePosition(line_no, word_pos);                     //Create line position object
                     line_track = new ObjectList();                                  //Create new ObjectList
@@ -87,13 +88,16 @@ public class Xref {
 
     /**
      * Outputs each word in binary tree alphabetically, line number, word position, and word count.
+     * Outputs search function.
      */
-    public void outputTree() {
+    public void outputTree() throws IOException {
         System.out.print('\n');
         System.out.println("X-REFERENCE");
         System.out.println("-----------");
         System.out.printf("%-10s %15s %37s\n", "Word List", "Word Count", "Line Number-Word Position\n");
         ObjectTreeNode p = tree.getRoot();
         tree.inTrav(p);
+        System.out.print('\n');
+        q.findWord();
     }
 }
