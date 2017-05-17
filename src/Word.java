@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  * Creates Word class objects, which are placed into the object binary search tree.
  * @author Cody Young
@@ -11,37 +15,41 @@ public class Word implements TreeComparable, Comparable{
                                           //which contains line number and word position.
     private LinePosition lpos;            //LinePosition object to insert into linked list
     private int key;                      //Hash value - determines which index to store in hash table
+    private PrintWriter foutput;
 
     /**
      * Constructor for Word objects. Takes input string and variables as argument.
      */
-    public Word (String inword, int word_count, LinePosition lpos, ObjectList line_track) {
+    public Word (String inword, int word_count, LinePosition lpos, ObjectList line_track) throws IOException {
         this.word_count = word_count;
         this.inword = inword;
         this.lpos = lpos;
         this.line_track = line_track;
+        foutput = new PrintWriter(new FileWriter("csis.txt"));
     }
 
     /**
      * Overloaded empty constructor for word objects.
      */
-    public Word() {
-
+    public Word() throws IOException {
+        foutput = new PrintWriter(new FileWriter("csis.txt"));
     }
 
     /**
      * Overloaded constructor for Word objects. Takes input string and hash value as argument.
      */
-    public Word(String inword, int key) {
+    public Word(String inword, int key) throws IOException {
         this.inword = inword;
         this.key = key;
+        foutput = new PrintWriter(new FileWriter("csis.txt"));
     }
 
     /**
      * Overloaded constructor for Word objects. Takes input string as argument.
      */
-    public Word(String inword) {
+    public Word(String inword) throws IOException {
         this.inword = inword;
+        foutput = new PrintWriter(new FileWriter("csis.txt"));
     }
 
     public LinePosition getLpos() {
@@ -84,14 +92,18 @@ public class Word implements TreeComparable, Comparable{
     public void visit() {
         ObjectListNode p = line_track.getFirstNode();
         System.out.printf("%-10s%10d ",inword,word_count);  //Prints out word and count
+        foutput.printf("%-10s%10d ",inword,word_count);
         System.out.print("                 ");
+        foutput.print("                 ");
         //Prints out line number and word position for each word
         while(p != null) {
             LinePosition temp = (LinePosition)p.getInfo();
             System.out.printf("%d-%d ", temp.getLine_no(), temp.getWord_pos());
+            foutput.printf("%d-%d ", temp.getLine_no(), temp.getWord_pos());
             p = p.getNext();
         }
         System.out.print('\n');
+        foutput.print('\n');
     }
 
     /**

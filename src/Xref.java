@@ -16,6 +16,7 @@ public class Xref {
     private LinePosition lpos;       //Object attached to Words used to track line number and word position
     private Hash h;                  //Hash table and function
     private Query q;                //Used for search function
+    private PrintWriter foutput;
 
     /**
      * Constructor method for Xref objects. Initializes instance variables.
@@ -24,6 +25,7 @@ public class Xref {
         tree = new ObjectBinaryTree();
         h = new Hash();
         q = new Query(tree);
+        foutput = new PrintWriter(new FileWriter("csis.txt"));
     }
 
     /**
@@ -44,16 +46,22 @@ public class Xref {
         for(String browns : blacklist) {    //Hashes each word in blacklist
             h.cookHash(browns);
         }
-
         System.out.println("Initializing hash...done");
+        foutput.println("Initializing hash...done");
         System.out.println("Collisions: " + h.getCollisions());    //Prints number of collisions
+        foutput.println("Collisions: " + h.getCollisions());
         System.out.println("Longest chain: " + h.getMaxlen());      //Prints length of longest list
+        foutput.println("Longest chain: " + h.getMaxlen());
         System.out.printf("Average chain size: %.2f", h.getAvg_len());  //Print average chain size to two decimal places
+        foutput.printf("Average chain size: %.2f", h.getAvg_len());
         System.out.print('\n');
+        foutput.print('\n');
         System.out.println("Description: Uses chaining. Takes input string, shifts each character's bit in string to the left by 7,");
+        foutput.println("Description: Uses chaining. Takes input string, shifts each character's bit in string to the left by 7,");
         System.out.println("sums value and divides by the modulus, which is the table size.");
+        foutput.println("sums value and divides by the modulus, which is the table size.");
         System.out.println("Note: Duplicate indexes in the table indicate chained values.");
-
+        foutput.println("Note: Duplicate indexes in the table indicate chained values.");
         while(sc.hasNextLine()) {
             String input_string = sc.nextLine();
             //Ignore all non-letter characters, convert to lower case
@@ -92,12 +100,17 @@ public class Xref {
      */
     public void outputTree() throws IOException {
         System.out.print('\n');
+        foutput.print('\n');
         System.out.println("X-REFERENCE");
+        foutput.println("X-REFERENCE");
         System.out.println("-----------");
+        foutput.println("-----------");
         System.out.printf("%-10s %15s %37s\n", "Word List", "Word Count", "Line Number-Word Position\n");
+        foutput.printf("%-10s %15s %37s\n", "Word List", "Word Count", "Line Number-Word Position\n");
         ObjectTreeNode p = tree.getRoot();
         tree.inTrav(p);
         System.out.print('\n');
+        foutput.print('\n');
         q.findWord();
     }
 }

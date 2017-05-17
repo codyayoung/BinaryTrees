@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  * In house hash function for input strings.
  * Hashes strings, places key-value pairs in tables, and performs lookups.
@@ -17,16 +21,18 @@ public class Hash {
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
     private Word chain;                         //Key to hash
+    private PrintWriter foutput;
 
     /**
      * Constructor for Hash objects. Creates an array of Object linked lists.
      */
-    public Hash() {
+    public Hash() throws IOException {
         hashtable = new ObjectList[TABLESIZE];      //Initialize hash table
         nodechain = new ObjectList();
         for(int i = 0; i < TABLESIZE; i++) {
             hashtable[i] = null;
         }
+        foutput = new PrintWriter(new FileWriter("csis.txt"));
     }
 
     /**
@@ -46,7 +52,7 @@ public class Hash {
      * Hashes string and checks if value exists in hash table.
      * If it does, inserts key and value into hash table.
      */
-    public void cookHash(String s) {
+    public void cookHash(String s) throws IOException {
         int i = getHash(s);     //Create hash value
         chain = new Word(s, i);         //Create new Word object with input string and hash value
         if(hashtable[i] == null) {
@@ -74,9 +80,13 @@ public class Hash {
      */
     public void outputHash() {
         System.out.print('\n');
+        foutput.print('\n');
         System.out.println("HASH TABLE");
+        foutput.println("HASH TABLE");
         System.out.println("----------");
+        foutput.println("----------");
         System.out.printf("%-10s %15s\n", "Index", "Key\n");
+        foutput.printf("%-10s %15s\n", "Index", "Key\n");
         for(int i = 0; i < hashtable.length; i++) {
             if(hashtable[i] == null) {
                 continue;
@@ -87,6 +97,7 @@ public class Hash {
                 while(kim != null) {
                     Word north = (Word)kim.getInfo();
                     System.out.printf("%-10d%15s\n", north.getKey(), north.getInword());
+                    foutput.printf("%-10d%15s\n", north.getKey(), north.getInword());
                     kim = kim.getNext();
                 }
             }
@@ -98,7 +109,7 @@ public class Hash {
      * @param s String to look up
      * @return True if found, false if not
      */
-    public boolean containsHash(String s) {
+    public boolean containsHash(String s) throws IOException {
         int i = getHash(s);      //Get hash value
         ObjectList yeezychain = hashtable[i];    //Check list at index value
         if(yeezychain == null)
