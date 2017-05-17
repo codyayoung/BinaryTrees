@@ -112,5 +112,6 @@ public class Xref {
         System.out.print('\n');
         foutput.print('\n');
         q.findWord();
+        //foutput.close();
     }
 }

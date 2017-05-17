@@ -29,7 +29,6 @@ public class Driver {
         foutput.print('\n');
         x.scanGetty();
         x.outputTree();
-        sc.close();
         foutput.close();
     }
 }
