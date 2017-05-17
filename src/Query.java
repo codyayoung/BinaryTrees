@@ -24,16 +24,20 @@ public class Query {
         System.out.println("SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)");
         System.out.println("--------------------------------------------");
         while (true) {
-            System.out.println("Enter word to search:");
-            //Scanner fj = new Scanner(System.in);
-            //String input = fj.nextLine();
-            String input = "dedicated";
+            System.out.println("Enter word:");
+            Scanner fj = new Scanner(System.in);
+            String input = fj.nextLine();
+            //String input = "dedicated";
             if(input.equals("EXIT")) {
                 return;
             }
             Word target = new Word(input);
-            tree.searchBST(target);
-            System.out.printf("%s %d\n", target.getInword(), target.getWord_count());
+            ObjectTreeNode found = tree.searchBST(target);
+            if(target == null) {
+                System.out.println("Error: Word not found.");
+                return;
+            }
+            System.out.println(found.getInfo().toString());
         }
     }
 }

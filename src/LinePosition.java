@@ -57,4 +57,14 @@ public class LinePosition implements Comparable{
     public void setWord_pos(int word_pos) {
         this.word_pos = word_pos;
     }
+
+    @Override
+    public String toString() {
+       StringBuilder sb = new StringBuilder();
+       sb.append(line_no);
+       sb.append("-");
+       sb.append(word_pos);
+
+       return sb.toString();
+    }
 }

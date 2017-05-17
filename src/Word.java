@@ -119,4 +119,16 @@ public class Word implements TreeComparable, Comparable{
     public ObjectList getLine_track() {
         return line_track;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(inword);
+        sb.append("   ");
+        sb.append(getWord_count());
+        sb.append("   ");
+        sb.append(line_track);
+
+        return sb.toString();
+    }
 }
