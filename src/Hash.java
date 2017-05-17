@@ -116,6 +116,10 @@ public class Hash {
     }
 
 
+    /**
+     * Gets average chain length of the linked lists in the
+     * @return
+     */
     public float getAvg_len() {
         return avg_len;
     }

@@ -104,14 +104,26 @@ public class Word implements TreeComparable, Comparable{
         return inword.compareTo(y.getInword());
     }
 
+    /**
+     * Gets hash value.
+     * @return Hash value
+     */
     public int getKey() {
         return key;
     }
 
+    /**
+     * Gets number of times word appears in file.
+     * @return Frequency of word
+     */
     public int getWord_count() {
         return word_count;
     }
 
+    /**
+     *Overriden toString method for Word objects - used to print out searched word in Query.
+     * @return String representation of a Word object
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

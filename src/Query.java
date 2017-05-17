@@ -33,11 +33,11 @@ public class Query {
             }
             Word target = new Word(input);
             ObjectTreeNode found = tree.searchBST(target);
-            if(found == null) {
+            if(found == null) {                 //Check if word is not found
                 System.out.println("ERROR: Word not found.");
                 return;
             }
-            System.out.println(found.getInfo().toString());
+            System.out.println(found.getInfo().toString());     //Print out Word object found
         }
     }
 }
