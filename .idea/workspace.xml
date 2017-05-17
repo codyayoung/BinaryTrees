@@ -32,7 +32,7 @@
               <caret line="68" column="108" lean-forward="true" selection-start-line="68" selection-start-column="108" selection-end-line="68" selection-end-column="108" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1495039472479" expanded="true" signature="5237:5500" ph="{...}" />
+                <marker date="1495040478563" expanded="true" signature="5237:5500" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -147,12 +147,12 @@
         <option value="$PROJECT_DIR$/csis.txt" />
         <option value="$PROJECT_DIR$/src/Query.java" />
         <option value="$PROJECT_DIR$/src/Word.java" />
-        <option value="$PROJECT_DIR$/src/Xref.java" />
         <option value="$PROJECT_DIR$/src/Driver.java" />
         <option value="$PROJECT_DIR$/src/TreeComparable.java" />
         <option value="$PROJECT_DIR$/src/ObjectTreeNodeInterface.java" />
         <option value="$PROJECT_DIR$/src/ObjectBinaryTreeInterface.java" />
         <option value="$PROJECT_DIR$/src/Chain.java" />
+        <option value="$PROJECT_DIR$/src/Xref.java" />
       </list>
     </option>
   </component>
@@ -926,6 +926,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -935,7 +936,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36403033" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1081,7 +1082,7 @@
           <caret line="22" column="103" lean-forward="false" selection-start-line="22" selection-start-column="103" selection-end-line="22" selection-end-column="103" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495039472479" expanded="true" signature="5237:5500" ph="{...}" />
+            <marker date="1495040478563" expanded="true" signature="5237:5500" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1102,7 +1103,7 @@
           <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495039472479" expanded="true" signature="5237:5500" ph="{...}" />
+            <marker date="1495040478563" expanded="true" signature="5237:5500" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1168,7 +1169,7 @@
           <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495039472479" expanded="true" signature="5237:5500" ph="{...}" />
+            <marker date="1495040478563" expanded="true" signature="5237:5500" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1508,7 +1509,7 @@
           <caret line="68" column="108" lean-forward="true" selection-start-line="68" selection-start-column="108" selection-end-line="68" selection-end-column="108" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495039472479" expanded="true" signature="5237:5500" ph="{...}" />
+            <marker date="1495040478563" expanded="true" signature="5237:5500" ph="{...}" />
           </folding>
         </state>
       </provider>
