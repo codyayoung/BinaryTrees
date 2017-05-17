@@ -29,7 +29,7 @@ public class Query {
             Scanner fj = new Scanner(System.in);
             String input = fj.nextLine();
             Word target = new Word(input);
-            tree.searchBST(target);
+            tree.searchBST(target.getInword());
             target.visit();
 
         } catch (InputMismatchException a) {

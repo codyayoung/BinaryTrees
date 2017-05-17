@@ -13,21 +13,20 @@ public class Word implements TreeComparable, Comparable{
     private int key;                      //Hash value - determines which index to store in hash table
 
     /**
-     * Constructor method for Word objects. Initializes instance variables.
-     */
-    public Word () {
-        word_count = 0;
-        line_track = new ObjectList();
-    }
-
-    /**
-     * Overloaded constructor for Word objects. Takes input string and variables as argument.
+     * Constructor for Word objects. Takes input string and variables as argument.
      */
     public Word (String inword, int word_count, LinePosition lpos, ObjectList line_track) {
         this.word_count = word_count;
         this.inword = inword;
         this.lpos = lpos;
         this.line_track = line_track;
+    }
+
+    /**
+     * Overloaded empty constructor for word objects.
+     */
+    public Word() {
+
     }
 
     /**
@@ -68,7 +67,6 @@ public class Word implements TreeComparable, Comparable{
     public void setInword(String inword) {
         this.inword = inword;
     }
-
 
     /**
      * Performs specific operations on duplicate objects in the binary tree.
