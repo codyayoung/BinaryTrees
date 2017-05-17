@@ -112,4 +112,11 @@ public class Word implements TreeComparable, Comparable{
         return key;
     }
 
+    public int getWord_count() {
+        return word_count;
+    }
+
+    public ObjectList getLine_track() {
+        return line_track;
+    }
 }

@@ -23,12 +23,18 @@ public class Query {
     public void findWord() throws IOException {
         System.out.println("SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)");
         System.out.println("--------------------------------------------");
-        System.out.println("Enter word to search:");
-        Scanner fj = new Scanner(System.in);
-        String input = fj.nextLine();
-        Word target = new Word(input);
-        tree.searchBST(target);
-        target.visit();
+        while (true) {
+            System.out.println("Enter word to search:");
+            //Scanner fj = new Scanner(System.in);
+            //String input = fj.nextLine();
+            String input = "dedicated";
+            if(input.equals("EXIT")) {
+                return;
+            }
+            Word target = new Word(input);
+            tree.searchBST(target);
+            System.out.printf("%s %d\n", target.getInword(), target.getWord_count());
+        }
     }
 }
 
