@@ -21,11 +21,11 @@ public class Xref {
     /**
      * Constructor method for Xref objects. Initializes instance variables.
      */
-    public Xref() throws IOException {
+    public Xref(PrintWriter foutput) throws IOException {
         tree = new ObjectBinaryTree();
         h = new Hash();
         q = new Query(tree);
-        foutput = new PrintWriter(new FileWriter("csis.txt"));
+        this.foutput = foutput;
     }
 
     /**
@@ -91,6 +91,8 @@ public class Xref {
             line_no++;          //Increment line number
             word_pos = 0;       //Reset word position when new line is reached
         }
+        sc.close();
+        om.close();
         h.outputHash();
     }
 
@@ -112,6 +114,5 @@ public class Xref {
         System.out.print('\n');
         foutput.print('\n');
         q.findWord();
-        //foutput.close();
     }
 }

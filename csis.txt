@@ -1,0 +1,36 @@
+The Gettysburg Address - November 19, 1863
+1      Four score and seven years ago our fathers brought forth, upon this  
+2      continent, a new nation, conceived in liberty, and dedicated to the
+3      proposition that all men are created equal. Now we are engaged in a 
+4      great civil war, testing whether that nation, or any nation, so 
+5      conceived, and so dedicated, can long endure. We are met here on a 
+6      great battlefield of that war. We have come to dedicate a portion of 
+7      it as a final resting place for those who here gave their lives that  
+8      that nation might live. It is altogether fitting and proper that we 
+9      should do this. But in a larger sense we can not dedicate - we can not
+10     consecrate - we can not hallow this ground. The brave men, living and
+11     dead, who struggled here, have consecrated it far above our poor power 
+12     to add or detract. The world will little note, nor long remember, what 
+13     we say here, but can never forget what they did here. It is for us, the  
+14     living, rather to be dedicated here to the unfinished work which they 
+15     have, thus far, so nobly carried on. It is rather for us to be here 
+16     dedicated to the great task remaining before us that from these honored 
+17     dead we take increased devotion to that cause for which they here gave 
+18     the last full measure of devotion - that we here highly resolve that
+19     these dead shall not have died in vain; that this nation shall have a 
+20     new birth of freedom; and that this government of the people, by the 
+21     people, for the people, shall not perish from the earth.
+
+Initializing hash...done
+Collisions: 2
+Longest chain: 2
+Average chain size: 1.37
+Description: Uses chaining. Takes input string, shifts each character's bit in string to the left by 7,
+sums value and divides by the modulus, which is the table size.
+Note: Duplicate indexes in the table indicate chained values.
+
+X-REFERENCE
+-----------
+Word List       Word Count            Line Number-Word Position
+
+

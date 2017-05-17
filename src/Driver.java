@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Driver {
     public static void main(String[] args) throws IOException {
         PrintWriter foutput = new PrintWriter(new FileWriter("csis.txt"));
-        Xref x = new Xref();
+        Xref x = new Xref(foutput);
         int line_number = 0;
 
         //Start main program output
