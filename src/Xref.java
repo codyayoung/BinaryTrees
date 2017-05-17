@@ -24,7 +24,7 @@ public class Xref {
     public Xref(PrintWriter foutput) throws IOException {
         tree = new ObjectBinaryTree();
         h = new Hash();
-        q = new Query(tree);
+        q = new Query(tree, foutput);
         this.foutput = foutput;
     }
 
@@ -76,7 +76,7 @@ public class Xref {
                 else {
                     lpos = new LinePosition(line_no, word_pos);                     //Create line position object
                     line_track = new ObjectList();                                  //Create new ObjectList
-                    word = new Word(in_string, word_count, lpos, line_track);       //Create new Word object
+                    word = new Word(in_string, word_count, lpos, line_track, foutput);       //Create new Word object
 
                     word.setInword(in_string);      //Set word
                     lpos.setLine_no(line_no);       //Set line number
@@ -98,7 +98,7 @@ public class Xref {
 
     /**
      * Outputs each word in binary tree alphabetically, line number, word position, and word count.
-     * Outputs search function.
+     * Outputs search results.
      */
     public void outputTree() throws IOException {
         System.out.print('\n');

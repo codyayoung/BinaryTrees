@@ -20,43 +20,47 @@ public class Word implements TreeComparable, Comparable{
     /**
      * Constructor for Word objects. Takes input string and variables as argument.
      */
-    public Word (String inword, int word_count, LinePosition lpos, ObjectList line_track) throws IOException {
+    public Word (String inword, int word_count, LinePosition lpos, ObjectList line_track, PrintWriter foutput) throws IOException {
         this.word_count = word_count;
         this.inword = inword;
         this.lpos = lpos;
         this.line_track = line_track;
-        foutput = new PrintWriter(new FileWriter("csis.txt"));
+        this.foutput = foutput;
     }
 
     /**
      * Overloaded empty constructor for word objects.
      */
-    public Word() throws IOException {
-        foutput = new PrintWriter(new FileWriter("csis.txt"));
+    public Word(PrintWriter foutput) throws IOException {
+        this.foutput = foutput;
     }
 
     /**
      * Overloaded constructor for Word objects. Takes input string and hash value as argument.
      */
-    public Word(String inword, int key) throws IOException {
+    public Word(String inword, int key, PrintWriter foutput) throws IOException {
         this.inword = inword;
         this.key = key;
-        foutput = new PrintWriter(new FileWriter("csis.txt"));
+        this.foutput = foutput;
     }
 
     /**
      * Overloaded constructor for Word objects. Takes input string as argument.
      */
-    public Word(String inword) throws IOException {
+    public Word(String inword, PrintWriter foutput) throws IOException {
         this.inword = inword;
-        foutput = new PrintWriter(new FileWriter("csis.txt"));
+        this.foutput = foutput;
     }
 
+    /**
+     * Returns line position of word.
+     * @return Line position
+     */
     public LinePosition getLpos() {
         return lpos;
     }
 
-    /**`
+    /**
      * Gets word input from text file.
      * @return Word from text file.
      */

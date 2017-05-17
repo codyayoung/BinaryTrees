@@ -18,12 +18,17 @@ public class Query {
     /**
      * Overloaded constructor method for Query objects - takes binary tree as argument.
      */
-    public Query(ObjectBinaryTree tree) throws IOException {
-        target = new Word();
+    public Query(ObjectBinaryTree tree, PrintWriter foutput) throws IOException {
+        target = new Word(foutput);
         this.tree = tree;
-        foutput = new PrintWriter(new FileWriter("csis.txt"));
+        this.foutput = foutput;
     }
 
+    /**
+     * Runs search function through binary tree.
+     * If fount, prints word, word count, and line number/word position.
+     * @throws IOException Word not found in tree
+     */
     public void findWord() throws IOException {
         System.out.println("SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)");
         foutput.println("SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)");
@@ -33,14 +38,15 @@ public class Query {
             System.out.println("Enter word:");          //Get user input
             foutput.println("Enter word:");
             Scanner fj = new Scanner(System.in);
-            String input = fj.nextLine();
-            //String input = "soldier";
+            String input = fj.next();
             if(input.equals("EXIT")) {              //Type "EXIT" to exit program and end execution
                 return;
             }
-            Word target = new Word(input);
+            Word target = new Word(input, foutput);
             ObjectTreeNode found = tree.searchBST(target);
             if(found == null) {                 //Check if word is not found
+                System.out.println(input);
+                foutput.println(input);
                 System.out.println("ERROR: Word not found.");
                 foutput.println("ERROR: Word not found.");
                 return;

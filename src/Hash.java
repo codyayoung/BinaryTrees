@@ -54,7 +54,7 @@ public class Hash {
      */
     public void cookHash(String s) throws IOException {
         int i = getHash(s);     //Create hash value
-        chain = new Word(s, i);         //Create new Word object with input string and hash value
+        chain = new Word(s, i, foutput);         //Create new Word object with input string and hash value
         if(hashtable[i] == null) {
             ObjectList newChain = new ObjectList();
             newChain.insert(chain);
@@ -114,7 +114,7 @@ public class Hash {
         ObjectList yeezychain = hashtable[i];    //Check list at index value
         if(yeezychain == null)
             return false;
-        Word kanye = new Word(s, i);
+        Word kanye = new Word(s, i, foutput);
         return yeezychain.contains(kanye);
     }
 

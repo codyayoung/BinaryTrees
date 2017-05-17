@@ -1,10 +1,10 @@
 import java.io.*;
 import java.util.Scanner;
-
 /**
- * Performs operations and runs main program.
+ * Binary Trees Lab - Uses binary trees and linked lists
+ * to perform functions on a famous speech.
  * @author Cody Young   Palomar ID: 008372648
- * @version 5/18/17
+ * @version 5/19/17
  */
 public class Driver {
     public static void main(String[] args) throws IOException {
@@ -17,7 +17,7 @@ public class Driver {
         System.out.println("The Gettysburg Address - November 19, 1863");
         foutput.println("The Gettysburg Address - November 19, 1863");
 
-        while (sc.hasNext()) {       //Outputs text file in entirety with line numbers
+        while (sc.hasNext()) {       //Outputs raw text file with line numbers
             line_number += 1;
             String input_string = sc.nextLine();
             System.out.printf("%-5d  ", line_number);

@@ -1,5 +1,7 @@
 /**
- * Created by masterchef13 on 5/4/17.
+ * Interface to compare ObjectBinaryTree nodes.
+ * @author Cody Young
+ * @version 5/19/2017
  */
 public interface ObjectTreeNodeInterface {
 	public void setInfo(Object o);

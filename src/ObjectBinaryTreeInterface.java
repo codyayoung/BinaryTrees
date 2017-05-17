@@ -1,5 +1,7 @@
 /**
- * Created by masterchef13 on 5/4/17.
+ *Interface to access ObjectBinaryTree methods.
+ * @author Cody Young
+ * @version 5/19/2017
  */
 public interface ObjectBinaryTreeInterface {
 	public ObjectTreeNode getRoot();
