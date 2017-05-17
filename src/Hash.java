@@ -12,8 +12,8 @@ public class Hash {
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
     private int maxlen = 0;                     //Maximum length of linked list - total number of nodes
-    private float avg_len = 0;                  //Average length of linked list
-    private int num_keys = 0;                   //Number of elements in hash table
+    private float avg_len;                      //Average length of linked list
+    private float num_keys = 0;                   //Number of elements in hash table
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
     private Word chain;                         //Key to hash
@@ -85,6 +85,7 @@ public class Hash {
         if(len > maxlen) {
             maxlen = len;
         }
+        avg_len = TABLESIZE / num_keys;
     }
 
     /**
@@ -145,7 +146,7 @@ public class Hash {
      * Gets length of linked list(bucket) in hash table.
      * @return Length of linked list
      */
-    public int getLen() {
+    public float getLen() {
         return len;
     }
 
@@ -158,7 +159,6 @@ public class Hash {
     }
 
     public float getAvg_len() {
-        avg_len = num_keys/TABLESIZE;
         return avg_len;
     }
 
@@ -176,5 +176,13 @@ public class Hash {
 
     public void setMaxlen(int maxlen) {
         this.maxlen = maxlen;
+    }
+
+    public float getNum_keys() {
+        return num_keys;
+    }
+
+    public void setNum_keys(int num_keys) {
+        this.num_keys = num_keys;
     }
 }

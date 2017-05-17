@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Allows user to perform searches on words in text file. Returns statistics.
  * @author Cody Young
@@ -23,6 +25,7 @@ public class Query {
 
     public void findWord() {
         System.out.println("Enter word to search:");
+        Scanner finput = new Scanner(System.in);
 
     }
 }
