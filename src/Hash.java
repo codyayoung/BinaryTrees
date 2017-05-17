@@ -12,7 +12,7 @@ public class Hash {
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
     private int maxlen = 0;                     //Maximum length of linked list - total number of nodes
-    private float avg_len;                  //Average length of linked list
+    private float avg_len = 0;                  //Average length of linked list
     private int num_keys = 0;                   //Number of elements in hash table
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
@@ -85,7 +85,6 @@ public class Hash {
         if(len > maxlen) {
             maxlen = len;
         }
-        avg_len = num_keys/TABLESIZE;
     }
 
     /**
@@ -105,7 +104,7 @@ public class Hash {
                 ObjectListNode kim = pablochain.getFirstNode();
                 while(kim != null) {
                     Word north = (Word)kim.getInfo();
-                    System.out.printf("%-10d %15s\n", north.getKey(), north.getInword());
+                    System.out.printf("%-10d%15s\n", north.getKey(), north.getInword());
                     kim = kim.getNext();
                 }
             }
@@ -159,6 +158,7 @@ public class Hash {
     }
 
     public float getAvg_len() {
+        avg_len = num_keys/TABLESIZE;
         return avg_len;
     }
 

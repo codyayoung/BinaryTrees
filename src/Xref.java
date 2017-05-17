@@ -51,6 +51,7 @@ public class Xref {
         System.out.print('\n');
         System.out.println("Description: Uses chaining. Takes input string, shifts each character's bit in string to the left by 7,");
         System.out.println("sums value and divides by the modulus, which is the table size.");
+        System.out.println("Note: Duplicate indexes in the table indicate chained values.");
 
         while(sc.hasNextLine()) {
             String input_string = sc.nextLine();
