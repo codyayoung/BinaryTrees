@@ -14,6 +14,7 @@ public class Driver {
 
         //Start main program output
         Scanner sc = new Scanner(new File("getty.txt"));
+        System.out.println("The Gettysburg Address - November 19, 1863");
 
         while(sc.hasNext()) {       //Outputs text file in entirety with line numbers
             line_number += 1;

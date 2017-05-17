@@ -14,7 +14,6 @@ public class Hash {
     private int maxlen = 0;                     //Maximum length of linked list - total number of nodes
     private float avg_len;                      //Average length of linked list
     private float num_keys = 0;                 //Number of elements in hash table
-    private float alpha;                      //Load factor
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
     private Word chain;                         //Key to hash
@@ -41,14 +40,6 @@ public class Hash {
             value = (value << 7) + s.charAt(i);      //Left shift for each character in string
         }
         return Math.abs(value % TABLESIZE);
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
     }
 
     /**
@@ -135,10 +126,5 @@ public class Hash {
      */
     public int getMaxlen() {
         return maxlen;
-    }
-
-    public float getAlpha() {
-        alpha = num_keys / TABLESIZE;
-        return alpha;
     }
 }

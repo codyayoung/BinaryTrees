@@ -48,10 +48,6 @@ public class Word implements TreeComparable, Comparable{
         return lpos;
     }
 
-    public void setLpos(LinePosition lpos) {
-        this.lpos = lpos;
-    }
-
     /**`
      * Gets word input from text file.
      * @return Word from text file.
@@ -116,10 +112,6 @@ public class Word implements TreeComparable, Comparable{
         return word_count;
     }
 
-    public ObjectList getLine_track() {
-        return line_track;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -127,8 +119,13 @@ public class Word implements TreeComparable, Comparable{
         sb.append("   ");
         sb.append(getWord_count());
         sb.append("   ");
-        sb.append(line_track);
-
+        ObjectListNode p = line_track.getFirstNode();
+        while(p != null) {
+            LinePosition temp = (LinePosition)p.getInfo();
+            sb.append(temp.toString());
+            sb.append(" ");
+            p = p.getNext();
+        }
         return sb.toString();
     }
 }
