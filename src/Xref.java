@@ -37,7 +37,7 @@ public class Xref {
         ArrayList<String> blacklist = new ArrayList<String>();
         int word_count = 1;
         int line_no = 1;
-        int word_pos = 0;
+        int word_pos = 1;
 
         while(om.hasNextLine()) {           //Reads input from omit file, puts in string arraylist - the blacklist
             String word = om.nextLine();
@@ -70,6 +70,7 @@ public class Xref {
             for (int i = 0; i < tokens.length; i++) {
                 String in_string = tokens[i];
                 if (h.containsHash(in_string)) {
+                    word_pos++;
                     continue;
                 }
                 //If hash value of main string matches blacklist, ignore - else continue

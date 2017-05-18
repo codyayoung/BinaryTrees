@@ -66,13 +66,13 @@ public class Hash {
             collisions++;           //Increment collisions
             len++;                  //Increment length of chain
             num_keys++;
-            oldChain.addLast(chain);
+            oldChain.insert(chain);
             hashtable[i] = oldChain;
         }
         if(len > maxlen) {
             maxlen = len;
         }
-          avg_len = num_keys / TABLESIZE;
+          avg_len = TABLESIZE / num_keys;
     }
 
     /**
