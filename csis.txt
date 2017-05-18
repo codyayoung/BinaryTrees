@@ -24,7 +24,7 @@ The Gettysburg Address - November 19, 1863
 Initializing hash...done
 Collisions: 2
 Longest chain: 2
-Average chain size: 1.37
+Average chain size: 0.73
 Description: Uses chaining. Takes input string, shifts each character's bit in string to the left by 7,
 sums value and divides by the modulus, which is the table size.
 Note: Duplicate indexes in the table indicate chained values.
@@ -181,30 +181,4 @@ who                2                  7-6 11-2
 will               1                  12-5 
 work               1                  14-7 
 world              1                  12-4 
-years              1                  1-4 
-
-SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)
---------------------------------------------
-Enter word:
-dedicate   2   6-6 9-10 
-Enter word:
-devotion   2   17-5 18-4 
-Enter word:
-gave   2   7-8 17-9 
-Enter word:
-men   2   3-2 10-9 
-Enter word:
-not   5   9-9 9-13 10-4 19-4 21-4 
-Enter word:
-people   3   20-6 21-1 21-2 
-Enter word:
-resolve   1   18-8 
-Enter word:
-us   3   13-12 15-6 16-6 
-Enter word:
-vain   1   19-6 
-Enter word:
-war   2   4-3 6-3 
-Enter word:
-soldier
-ERROR: Word not found.
+years

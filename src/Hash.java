@@ -15,7 +15,7 @@ public class Hash {
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
     private int maxlen = 0;                     //Maximum length of linked list - total number of nodes
-    private float avg_len;                      //Average length of linked list
+    private double avg_len;                      //Average length of linked list
     private float num_keys = 0;                 //Number of elements in hash table
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
@@ -72,7 +72,7 @@ public class Hash {
         if(len > maxlen) {
             maxlen = len;
         }
-        avg_len = TABLESIZE / num_keys;
+          avg_len = num_keys / TABLESIZE;
     }
 
     /**
@@ -131,7 +131,7 @@ public class Hash {
      * Gets average chain length of the linked lists in the
      * @return
      */
-    public float getAvg_len() {
+    public double getAvg_len() {
         return avg_len;
     }
 
