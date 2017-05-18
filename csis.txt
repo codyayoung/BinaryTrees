@@ -24,7 +24,7 @@ The Gettysburg Address - November 19, 1863
 Initializing hash...done
 Collisions: 2
 Longest chain: 2
-Average chain size: 1.37
+Average chain size: 1.08
 Description: Uses chaining. Takes input string, shifts each character's bit in string to the left by 7,
 sums value and divides by the modulus, which is the table size.
 Note: Duplicate indexes in the table indicate chained values.
