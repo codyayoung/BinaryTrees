@@ -15,7 +15,8 @@ public class Hash {
     private int value = 0;
     private int len = 0;                        //Length of linked list - number of nodes
     private int maxlen = 0;                     //Maximum length of linked list - total number of nodes
-    private float avg_len;                      //Average length of linked list
+    private double avg_len;                     //Average length of linked list
+    private double chains = 0;
     private float num_keys = 0;                 //Number of elements in hash table
     private ObjectList[] hashtable;             //Hash table - an array of linked lists
     private ObjectList nodechain;
@@ -59,6 +60,7 @@ public class Hash {
             ObjectList newChain = new ObjectList();
             newChain.insert(chain);
             hashtable[i] = newChain;
+            chains++;                  //Increment number of linked lists
             num_keys++;                //Increment overall number of elements in hash table
         }
         else {
@@ -66,13 +68,13 @@ public class Hash {
             collisions++;           //Increment collisions
             len++;                  //Increment length of chain
             num_keys++;
-            oldChain.addLast(chain);
+            oldChain.insert(chain);
             hashtable[i] = oldChain;
         }
-        if(len > maxlen) {
+        if(len > maxlen) {                   //Longest chain value
             maxlen = len;
         }
-        avg_len = TABLESIZE / num_keys;
+          avg_len = num_keys / chains;      //Calculate average chain size
     }
 
     /**
@@ -128,10 +130,10 @@ public class Hash {
 
 
     /**
-     * Gets average chain length of the linked lists in the
+     * Gets average chain length of the linked lists in the hash table.
      * @return
      */
-    public float getAvg_len() {
+    public double getAvg_len() {
         return avg_len;
     }
 
