@@ -206,7 +206,5 @@ vain   1   19-8
 Enter word:
 war   2   4-3 6-5 
 Enter word:
-four   1   1-2 
-Enter word:
 soldier
 ERROR: Word not found.
