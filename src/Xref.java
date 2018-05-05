@@ -71,7 +71,6 @@ public class Xref {
                 String in_string = tokens[i];
                 if (h.containsHash(in_string)) {
                     word_pos++;
-                    continue;
                 }
                 //If hash value of main string matches blacklist, ignore - else continue
                 else {

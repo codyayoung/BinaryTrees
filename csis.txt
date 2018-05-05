@@ -179,12 +179,4 @@ what               2                  12-13 13-8
 whether            1                  4-5 
 who                2                  7-9 11-2 
 will               1                  12-7 
-work               1                  14-10 
-world              1                  12-6 
-years              1                  1-6 
-
-SUPER WORD SEARCHER(ALMOST LIKE GOOGLE)
---------------------------------------------
-Enter word:
-soldier
-ERROR: Word not found.
+work               1  
